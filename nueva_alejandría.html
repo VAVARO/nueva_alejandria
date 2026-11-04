@@ -100,7 +100,7 @@
       justify-content: space-between;
       gap: 20px;
       border-bottom: 1px solid var(--line);
-      background: rgba(246, 243, 236, 0.94);
+      background: rgba(246, 243, 236, 0.95);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
@@ -149,29 +149,40 @@
       font-size: 13px;
       font-weight: 500;
       letter-spacing: .04em;
+      white-space: nowrap;
     }
     nav a {
       transition: color 160ms var(--ease-out);
       position: relative;
     }
+    nav a.active { color: var(--teal); }
     @media (hover: hover) and (pointer: fine) {
       nav a:hover { color: var(--teal); }
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--teal);
     }
     .nav-cta {
       background: var(--ink);
       color: #fff !important;
       padding: 10px 20px;
-      border-radius: 0;
+      border: 1px solid var(--ink);
       font-weight: 600;
       font-size: 12px;
-      letter-spacing: .04em;
-      border: 1px solid var(--ink);
+      letter-spacing: .05em;
       transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out) !important;
     }
     @media (hover: hover) and (pointer: fine) {
       .nav-cta:hover {
       background: var(--teal) !important;
       border-color: var(--teal) !important;
+      color: #fff !important;
     }
     }
 
@@ -917,7 +928,66 @@
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: var(--ink);
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-preview-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 300ms var(--ease-out), filter 300ms var(--ease-out);
+    }
+    .video-embed-wrapper:hover .video-preview-thumb {
+      transform: scale(1.02);
+      filter: brightness(0.92);
+    }
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(27, 24, 81, 0.3);
+      transition: background 200ms var(--ease-out);
+      gap: 12px;
+    }
+    .video-embed-wrapper:hover .video-play-overlay {
+      background: rgba(27, 24, 81, 0.15);
+    }
+    .video-play-btn {
+      width: 68px;
+      height: 48px;
+      background: #FF0000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out);
+    }
+    .video-embed-wrapper:hover .video-play-btn {
+      transform: scale(1.08);
+      background: #cc0000;
+    }
+    .video-play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #ffffff;
+      margin-left: 2px;
+    }
+    .video-play-hint {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(27, 24, 81, 0.82);
+      padding: 5px 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
     }
     .video-embed-wrapper iframe {
       position: absolute;
@@ -1380,7 +1450,7 @@
         top: 80px;
         left: 0;
         right: 0;
-        background: rgba(246, 243, 236, 0.98);
+        background: rgba(252, 253, 250, 0.98);
         backdrop-filter: blur(12px);
         flex-direction: column;
         padding: 24px 8%;
@@ -1509,7 +1579,6 @@
 
     <nav id="main-nav" aria-label="Navegación principal">
       <a href="#escuela">La escuela</a>
-      <a href="#fundadora">Fundadora</a>
       <a href="#cursos">Cursos y talleres</a>
       <a href="#consultas">Consultas individuales</a>
       <a href="#escritos">Escritos</a>
@@ -1628,10 +1697,10 @@
           </div>
           <div class="course-footer">
             <div class="course-price">
-              <span class="amount">$85.000 CLP</span>
-              <span class="note">o $95 USD internacional</span>
+              <span class="amount">$XX.XXX CLP</span>
+              <span class="note">o $XX.XXX USD internacional</span>
             </div>
-            <button class="btn-reserve" data-course="El Lenguaje de los Símbolos" data-price="$85.000 CLP / $95 USD">Reservar cupo →</button>
+            <button class="btn-reserve" data-course="El Lenguaje de los Símbolos" data-price="$XX.XXX CLP / $XX.XXX USD">Reservar cupo →</button>
           </div>
         </article>
 
@@ -1649,10 +1718,10 @@
           </div>
           <div class="course-footer">
             <div class="course-price">
-              <span class="amount">$190.000 CLP</span>
-              <span class="note">Facilidades en 3 cuotas o $210 USD</span>
+              <span class="amount">$XX.XXX CLP</span>
+              <span class="note">Facilidades en 3 cuotas o $XX.XXX USD</span>
             </div>
-            <button class="btn-reserve" data-course="Astrología Humanista: Carta Natal" data-price="$190.000 CLP / $210 USD">Reservar cupo →</button>
+            <button class="btn-reserve" data-course="Astrología Humanista: Carta Natal" data-price="$XX.XXX CLP / $XX.XXX USD">Reservar cupo →</button>
           </div>
         </article>
 
@@ -1670,10 +1739,10 @@
           </div>
           <div class="course-footer">
             <div class="course-price">
-              <span class="amount">$48.000 CLP</span>
+              <span class="amount">$XX.XXX CLP</span>
               <span class="note">12 cupos exclusivos</span>
             </div>
-            <button class="btn-reserve" data-course="Taller: El Oratorio y el Laboratorio" data-price="$48.000 CLP">Reservar cupo →</button>
+            <button class="btn-reserve" data-course="Taller: El Oratorio y el Laboratorio" data-price="$XX.XXX CLP">Reservar cupo →</button>
           </div>
         </article>
       </div>
@@ -1714,8 +1783,8 @@
 
         <aside class="consultation-cta-card">
           <span class="tag">Espacio de Consulta</span>
-          <div class="price">$58.000 CLP</div>
-          <div class="price-intl">o $68 USD vía PayPal / Tarjeta</div>
+          <div class="price">$XX.XXX CLP</div>
+          <div class="price-intl">o $XX.XXX USD vía PayPal / Tarjeta</div>
           <ul>
             <li>Duración: 75 a 90 minutos</li>
             <li>Modalidad: Online o Presencial</li>
@@ -1820,8 +1889,14 @@
           </div>
 
           <div class="embed-frame-wrapper">
-            <div class="video-embed-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/FjXZBH9Mf_I" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-embed-wrapper" id="yt-player-container" role="button" tabindex="0" aria-label="Reproducir video: Vivir en la realidad en YouTube">
+              <img src="./assets/youtube_preview.jpg" alt="Previsualización de la conferencia Vivir en la realidad con Alejandra Silva y Caro Ulloa" class="video-preview-thumb">
+              <div class="video-play-overlay">
+                <div class="video-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="video-play-hint">Reproducir conferencia ↗</span>
+              </div>
             </div>
           </div>
         </article>
@@ -1887,6 +1962,7 @@
           <li><a href="#cursos">Cursos y Talleres</a></li>
           <li><a href="#consultas">Consultas Individuales</a></li>
           <li><a href="#escritos">Escritos y Ensayos</a></li>
+          <li><a href="#conversaciones">Conversaciones</a></li>
         </ul>
       </div>
 
@@ -1940,7 +2016,7 @@
           <div class="form-summary">
             <span style="font-size: 12px; text-transform: uppercase; letter-spacing: .18em; color: var(--teal); font-weight: 700;">Curso seleccionado:</span>
             <strong id="summary-course-name">El Lenguaje de los Símbolos</strong>
-            <div id="summary-course-price" style="font-size: 13px; color: var(--ink);">Valor: $85.000 CLP / $95 USD</div>
+            <div id="summary-course-price" style="font-size: 13px; color: var(--ink);">Valor: $XX.XXX CLP / $XX.XXX USD</div>
           </div>
 
           <div class="mockup-notice">
@@ -2003,7 +2079,7 @@
         <form class="mockup-form" id="consultation-booking-form">
           <div class="form-summary">
             <strong>Lectura de Carta Natal & Acompañamiento Biográfico</strong>
-            <span style="font-size: 12px;">Sesión de 75 a 90 min con Alejandra Silva · $58.000 CLP / $68 USD</span>
+            <span style="font-size: 12px;">Sesión de 75 a 90 min con Alejandra Silva · $XX.XXX CLP / $XX.XXX USD</span>
           </div>
 
           <div class="mockup-notice">
@@ -2145,9 +2221,11 @@
 
   <!-- JAVASCRIPT DE INTERACCIÓN & MODALES -->
   <script>
-    // 1. Menú móvil
+    // 1. Menú móvil & Scrollspy activo
     const menuToggle = document.querySelector('#menu-toggle');
     const mainNav = document.querySelector('#main-nav');
+    const navLinks = mainNav ? mainNav.querySelectorAll('a:not(.nav-cta)') : [];
+
     if (menuToggle && mainNav) {
       menuToggle.onclick = () => {
         const isOpen = mainNav.classList.toggle('nav-open');
@@ -2159,6 +2237,32 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         };
       });
+    }
+
+    // Resaltar sección activa en navegación (idéntico al estilo activo de Prototipo B)
+    if (navLinks.length > 0) {
+      const sections = [];
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) sections.push({ link, target });
+        }
+      });
+
+      const updateActiveNav = () => {
+        const scrollPos = window.scrollY + 160;
+        let current = null;
+        sections.forEach(({ link, target }) => {
+          if (target.offsetTop <= scrollPos) {
+            current = link;
+          }
+        });
+        navLinks.forEach(link => link.classList.toggle('active', link === current));
+      };
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
     }
 
     // 2. Control de tono / contraste del Hero
@@ -2327,6 +2431,21 @@
         contactFormStep.style.display = 'none';
         contactConfirmation.style.display = 'block';
       };
+    }
+
+    // 8. Reproductor interactivo YouTube Facade
+    const ytContainer = document.querySelector('#yt-player-container');
+    if (ytContainer) {
+      const playVideo = () => {
+        ytContainer.innerHTML = '<iframe src="https://www.youtube.com/embed/FjXZBH9Mf_I?autoplay=1&rel=0" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>';
+      };
+      ytContainer.addEventListener('click', playVideo);
+      ytContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          playVideo();
+        }
+      });
     }
 
     // Cerrar modales haciendo click fuera del contenido (en el backdrop)

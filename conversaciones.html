@@ -241,7 +241,66 @@
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: var(--ink);
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-preview-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 300ms var(--ease-out), filter 300ms var(--ease-out);
+    }
+    .video-embed-wrapper:hover .video-preview-thumb {
+      transform: scale(1.02);
+      filter: brightness(0.92);
+    }
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(27, 24, 81, 0.3);
+      transition: background 200ms var(--ease-out);
+      gap: 12px;
+    }
+    .video-embed-wrapper:hover .video-play-overlay {
+      background: rgba(27, 24, 81, 0.15);
+    }
+    .video-play-btn {
+      width: 68px;
+      height: 48px;
+      background: #FF0000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out);
+    }
+    .video-embed-wrapper:hover .video-play-btn {
+      transform: scale(1.08);
+      background: #cc0000;
+    }
+    .video-play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #ffffff;
+      margin-left: 2px;
+    }
+    .video-play-hint {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(27, 24, 81, 0.82);
+      padding: 5px 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
     }
     .video-embed-wrapper iframe {
       position: absolute;
@@ -483,8 +542,14 @@
           </div>
 
           <div class="embed-frame-wrapper">
-            <div class="video-embed-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/FjXZBH9Mf_I" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-embed-wrapper" id="yt-player-container" role="button" tabindex="0" aria-label="Reproducir video: Vivir en la realidad en YouTube">
+              <img src="./assets/youtube_preview.jpg" alt="Previsualización de la conferencia Vivir en la realidad con Alejandra Silva y Caro Ulloa" class="video-preview-thumb">
+              <div class="video-play-overlay">
+                <div class="video-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="video-play-hint">Reproducir conferencia ↗</span>
+              </div>
             </div>
           </div>
         </article>
@@ -574,6 +639,20 @@
         const isOpen = mainNav.classList.toggle('nav-open');
         menuToggle.setAttribute('aria-expanded', String(isOpen));
       };
+    }
+
+    const ytContainer = document.querySelector('#yt-player-container');
+    if (ytContainer) {
+      const playVideo = () => {
+        ytContainer.innerHTML = '<iframe src="https://www.youtube.com/embed/FjXZBH9Mf_I?autoplay=1&rel=0" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>';
+      };
+      ytContainer.addEventListener('click', playVideo);
+      ytContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          playVideo();
+        }
+      });
     }
   </script>
 </body>
