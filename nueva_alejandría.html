@@ -1,0 +1,2342 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva Alejandría · Escuela para lo humano</title>
+  <meta name="description" content="Nueva Alejandría · Escuela para lo humano, fundada por Alejandra Silva Pérez. Arte, pensamiento, astrología humanista y vida interior.">
+  
+  <!-- Fuentes oficiales: carga local con fallback a Google Fonts CDN -->
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fcfdfa;
+      --paper-alt: #f5faf7;
+      --paper-warm: #f6f3ec;
+      --ink: #1B1851;
+      --ink-soft: #2a2569;
+      --teal: #30B1AC;
+      --teal-hover: #26928e;
+      --teal-soft: rgba(48, 177, 172, 0.12);
+      --line: rgba(27, 24, 81, 0.15);
+      --line-subtle: rgba(27, 24, 81, 0.08);
+      --text-muted: #4a4f65;
+      --text-light: #737890;
+      --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", "Acumin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper-warm);
+      color: var(--ink);
+      font: 16px/1.65 var(--font-sans);
+      font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    section[id] {
+      scroll-margin-top: 130px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    /* Barra comparativa de prototipos */
+    .prototype-bar {
+      background: var(--ink);
+      color: #e4f5f4;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 40;
+    }
+    .prototype-bar .badge {
+      background: var(--teal);
+      color: var(--ink);
+      padding: 2px 8px;
+      border-radius: 0;
+      font-weight: 700;
+      margin-right: 8px;
+      text-transform: uppercase;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+    .prototype-bar a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .prototype-bar a:hover {
+      color: var(--teal);
+    }
+    }
+
+    /* Cabecera */
+    header {
+      height: 105px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 243, 236, 0.94);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--ink);
+    }
+    .brand-logo {
+      height: 54px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .brand-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    nav a {
+      transition: color 160ms var(--ease-out);
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      nav a:hover { color: var(--teal); }
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: 0;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out) !important;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-cta:hover {
+      background: var(--teal) !important;
+      border-color: var(--teal) !important;
+    }
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      cursor: pointer;
+      z-index: 35;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 1px;
+      transition: transform 200ms var(--ease-out), opacity .25s ease;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 600px;
+      height: calc(100vh - 105px);
+      max-height: 860px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .backdrop {
+      position: absolute;
+      inset: 0 0 0 20%;
+      z-index: -2;
+      background: url('./assets/engraving_full.jpg') no-repeat center right / cover;
+      filter: grayscale(1) contrast(1.38) brightness(0.92);
+      transition: filter 200ms var(--ease-out);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, #fcfdfa 0%, rgba(252,253,250,0.98) 32%, rgba(252,253,250,0.6) 52%, transparent 85%),
+                  linear-gradient(0deg, #fcfdfa 0%, transparent 20%);
+    }
+    .hero.high-contrast .backdrop {
+      filter: grayscale(1) contrast(1.65) brightness(0.85);
+    }
+
+    .hero-copy {
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 65px 5% 40px;
+    }
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6.2vw, 84px);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      max-width: 760px;
+      margin: 26px 0;
+      color: var(--ink);
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--teal);
+    }
+    .intro {
+      max-width: 480px;
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+    }
+    .actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--ink);
+      color: #fff;
+      padding: 13px 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      border-radius: 0;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-primary:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+    .btn-secondary {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 3px;
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-secondary:hover {
+      color: var(--teal);
+    }
+    }
+
+    .hero-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 20px 5% 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      color: #727588;
+    }
+    .tools { display: flex; gap: 10px; }
+    .tools button {
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      font-size: 12px;
+      color: var(--ink);
+      border-radius: 0;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .tools button:hover {
+      border-color: var(--teal);
+      background: var(--paper);
+    }
+    }
+
+    /* Secciones comunes */
+    .section {
+      max-width: 1300px;
+      margin: auto;
+      padding: 95px 5%;
+    }
+    .section-header {
+      margin-bottom: 50px;
+    }
+    .section-eyebrow {
+      font: 600 11px var(--font-sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.15;
+      font-weight: 600;
+      color: var(--ink);
+      max-width: 820px;
+    }
+    .section-lead {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-top: 16px;
+    }
+
+    /* Sección 01: La Escuela & Fundadora */
+    .school-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 70px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 50px;
+    }
+    .manifesto-body p {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .manifesto-body > p:first-of-type::first-letter {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin: 6px 14px 0 0;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .manifesto-pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+      margin-top: 40px;
+      padding-top: 35px;
+      border-top: 1px solid var(--line);
+    }
+    .pillar-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .pillar-num {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--teal);
+      min-width: 28px;
+    }
+    .pillar-content h4 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .pillar-content p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Retrato & Perfil de la Fundadora (Columna Editorial) */
+    .founder-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 40px 35px;
+    }
+    .founder-portrait-figure {
+      margin-bottom: 24px;
+    }
+    .founder-portrait-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--line);
+    }
+    .founder-portrait-caption {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .founder-names {
+      margin-bottom: 18px;
+    }
+    .founder-names h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .founder-names span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-top: 4px;
+    }
+    .founder-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.6;
+      text-align: center;
+      color: var(--ink);
+      border-left: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 20px;
+      margin: 28px 0;
+    }
+    .founder-bio {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+    .founder-credentials {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Sección 02: Cursos y Talleres */
+    .courses-section {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .course-card {
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: 38px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 160ms var(--ease-out);
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .course-card:hover {
+      border-color: var(--teal);
+    }
+    }
+    .course-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: none;
+      padding: 0;
+      margin-bottom: 16px;
+    }
+    .course-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .course-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .course-meta {
+      list-style: none;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .course-meta li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .course-meta li strong {
+      color: var(--ink);
+    }
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+    .course-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .course-price .amount {
+      font-family: var(--font-serif);
+      font-variant-numeric: oldstyle-nums;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .course-price .note {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+    .btn-reserve {
+      background: var(--ink);
+      color: #fff;
+      padding: 11px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 0;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-reserve:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Sección 03: Consultas Individuales */
+    .consultations-section {
+      background: var(--paper-warm);
+    }
+    .consultation-box {
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 50px 45px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .consultation-info h3 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .consultation-info p {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .consultation-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .step-item {
+      background: transparent;
+      padding: 16px 0 0 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+    }
+    .step-item strong {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .step-item span {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: block;
+    }
+    .consultation-cta-card {
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .consultation-cta-card .tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .consultation-cta-card .price {
+      font-family: var(--font-serif);
+      font-variant-numeric: oldstyle-nums;
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .consultation-cta-card .price-intl {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+    .consultation-cta-card ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: left;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .consultation-cta-card ul li::before {
+      content: '— ';
+      color: var(--teal);
+      font-weight: 600;
+    }
+    .btn-book-now {
+      display: block;
+      width: 100%;
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 0;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-book-now:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Sección 04: Escritos y Reflexiones (Índice Literario) */
+    .essays-section {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .essays-index {
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+    }
+    .essay-card {
+      display: grid;
+      grid-template-columns: 20% 55% 25%;
+      gap: 30px;
+      align-items: baseline;
+      padding: 38px 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      transition: background-color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover {
+      background: rgba(27, 24, 81, 0.02);
+    }
+    }
+    .essay-col-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .essay-cat {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .essay-date {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    .essay-col-title .essay-title {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover .essay-title {
+      color: var(--teal);
+    }
+    }
+    .essay-col-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .essay-snippet {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .essay-readmore {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover .essay-readmore {
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+    }
+
+    /* Sección 05: Conversaciones & Medios Reales */
+    .conversations-section {
+      background: var(--paper-warm);
+    }
+    .media-showcase-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 65px;
+    }
+    .media-feature-card {
+      background: transparent;
+      border-top: 1px solid var(--line);
+      padding: 50px 0 0 0;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .media-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .media-feature-card h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.2vw, 36px);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .media-feature-card p {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .media-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .media-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Embeds Reales */
+    .embed-frame-wrapper {
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .spotify-frame {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+    .video-embed-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+    }
+    .video-embed-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Instagram Tríptico */
+    .ig-triptych-section {
+      margin-top: 70px;
+      padding-top: 45px;
+      border-top: 1px solid var(--line);
+    }
+    .ig-triptych-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .ig-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .ig-triptych-head h3 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .ig-triptych {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .ig-aphorism {
+      padding: 45px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      background: transparent;
+    }
+    .ig-aphorism:not(:last-child) {
+      border-right: 1px solid var(--line);
+    }
+    .ig-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .ig-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--ink);
+      flex-grow: 1;
+    }
+    .ig-date {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* Sección 06: Contacto y Carta Abierta */
+    .contact-section {
+      background: var(--paper-alt);
+      border-top: 1px solid var(--line);
+      padding: 90px 5%;
+    }
+    .contact-container {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .contact-container h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 4.2vw, 48px);
+      line-height: 1.2;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .contact-container p {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+    }
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: #bcc3d4;
+      padding: 60px 5% 40px;
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
+      margin-bottom: 30px;
+    }
+    .footer-brand .brand-title {
+      color: #ffffff;
+      font-size: 24px;
+    }
+    .footer-brand .brand-subtitle {
+      color: var(--teal);
+      margin-top: 4px;
+    }
+    .footer-brand p {
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #9299b0;
+      max-width: 320px;
+    }
+    .footer-col h5 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      color: #a4adc2;
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-col a:hover {
+      color: var(--teal);
+    }
+    }
+    .footer-bottom {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #727a94;
+    }
+
+    /* DIÁLOGOS MODALES Y MOCKUPS */
+    dialog {
+      padding: 0;
+      border: 1px solid var(--line);
+      width: min(720px, 94vw);
+      max-height: 90vh;
+      background: var(--paper);
+      margin: auto;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    dialog::backdrop {
+      background: rgba(27, 24, 81, 0.7);
+      backdrop-filter: blur(5px);
+    }
+    .modal-head {
+      background: var(--paper-warm);
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .modal-head h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .reading-time-indicator {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--teal);
+    }
+    .modal-close-btn {
+      font-size: 20px;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 0;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .modal-close-btn:hover {
+      color: var(--ink);
+    }
+    }
+    .modal-content-area {
+      padding: 30px 28px;
+      overflow-y: auto;
+      max-height: calc(90vh - 110px);
+    }
+
+    /* Formularios dentro de Modales (Mockups) */
+    .mockup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .04em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      font: 14px var(--font-sans);
+      color: var(--ink);
+      border-radius: 0;
+      transition: border-color 160ms var(--ease-out);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--teal);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-summary {
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      padding: 16px;
+      border-radius: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .form-summary strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .mockup-notice {
+      font-size: 12px;
+      color: var(--ink);
+      background: transparent;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-submit-form {
+      background: var(--ink);
+      color: #fff;
+      padding: 13px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 0;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-submit-form:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Estado de Confirmación en Modal */
+    .confirmation-state {
+      display: none;
+      text-align: center;
+      padding: 30px 15px;
+    }
+    .confirmation-icon {
+      font-size: 32px;
+      color: var(--teal);
+      margin: 0 auto 16px;
+      line-height: 1;
+    }
+    .confirmation-state h4 {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .confirmation-state p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin: 0 auto 25px;
+    }
+
+    /* Modal de Lectura de Ensayos: Pliego Literario */
+    #modal-essay-reader {
+      width: min(840px, 94vw);
+      background: var(--paper-warm);
+      border-radius: 0;
+    }
+    #modal-essay-reader .modal-head {
+      background: var(--paper-warm);
+      padding: 18px 8%;
+    }
+    #modal-essay-reader .modal-head h3 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    #modal-essay-reader .modal-content-area {
+      padding: 60px 10%;
+      background: var(--paper-warm);
+      max-height: calc(90vh - 75px);
+    }
+    .essay-reader-article {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .essay-reader-article h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 3.8vw, 42px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .essay-reader-meta {
+      font-size: 12px;
+      color: var(--teal);
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+      display: block;
+      text-align: center;
+    }
+    .essay-reader-body p {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.85;
+      color: #2b2e3e;
+      margin-bottom: 24px;
+    }
+    .essay-reader-body p:first-of-type::first-letter {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin: 6px 14px 0 0;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .essay-reader-body blockquote {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 30px 32px;
+      margin: 38px 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      text-align: center;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.6;
+    }
+    .essay-colophon {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .colophon-mark {
+      font-size: 20px;
+      color: var(--teal);
+      font-style: normal;
+    }
+    .btn-close-folio {
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 26px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-close-folio:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      header { height: 80px; }
+      .menu-toggle { display: flex; flex-shrink: 0; }
+      nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(246, 243, 236, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 24px 8%;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      nav.nav-open { display: flex; }
+      nav a { font-size: 15px; padding: 4px 0; }
+      .brand-logo { height: 44px; }
+      .brand-title { font-size: 20px; }
+      .brand-subtitle { font-size: 8.5px; }
+      .hero {
+        min-height: auto;
+        height: auto;
+        max-height: none;
+        padding-bottom: 25px;
+      }
+      .backdrop {
+        position: relative;
+        inset: auto;
+        height: 260px;
+        width: 100%;
+        mask-image: linear-gradient(180deg, black 65%, transparent 100%);
+        -webkit-mask-image: linear-gradient(180deg, black 65%, transparent 100%);
+      }
+      .hero::before { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .school-grid { grid-template-columns: 1fr; gap: 40px; }
+      .consultation-box { grid-template-columns: 1fr; padding: 35px 25px; gap: 35px; }
+      .consultation-steps { grid-template-columns: 1fr; }
+      .essay-card { grid-template-columns: 1fr; gap: 12px; padding: 26px 0; }
+      .media-feature-card { grid-template-columns: 1fr; padding: 40px 0 0 0; gap: 30px; }
+      .ig-triptych { grid-template-columns: 1fr; }
+      .ig-aphorism:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .prototype-bar { flex-direction: column; align-items: flex-start; font-size: 12px; }
+    }
+  
+    /* ===== Pulido de movimiento y accesibilidad ===== */
+    :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+    h1, h2, h3 { text-wrap: balance; }
+    p, blockquote, .essay-excerpt { text-wrap: pretty; }
+    h1, h2, h3, .brand-title { font-optical-sizing: auto; }
+
+    /* Foco de teclado visible en todas las páginas */
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    footer :focus-visible, .prototype-bar :focus-visible { outline-color: #ffffff; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 3px;
+    }
+    footer a:focus-visible, .prototype-bar a:focus-visible { outline-color: #ffffff; }
+
+    /* Respuesta al presionar */
+    .btn-primary, .nav-cta, .btn-reserve, .btn-reserve-action, .btn-book-action, .btn-book-now,
+    .btn-submit-form, .btn-close-folio, .btn-secondary, .media-btn {
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: 160ms;
+      transition-timing-function: var(--ease-out);
+    }
+    .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+    .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+    .btn-close-folio:active, .btn-secondary:active, .media-btn:active {
+      transform: scale(0.97);
+      transition-duration: 100ms;
+    }
+
+    /* Entrada y salida de modales (entra 220ms, sale 160ms) */
+    dialog {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out),
+                  overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open] {
+      opacity: 1;
+      transform: none;
+      transition-duration: 220ms;
+    }
+    @starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
+    dialog::backdrop {
+      opacity: 0;
+      transition: opacity 160ms var(--ease-out), overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open]::backdrop { opacity: 1; transition-duration: 220ms; }
+    @starting-style { dialog[open]::backdrop { opacity: 0; } }
+
+    /* Movimiento reducido: sin desplazamiento ni escala, se conservan opacidad y color */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      dialog, dialog[open] { transform: none; }
+      .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+      .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+      .btn-close-folio:active, .btn-secondary:active, .media-btn:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Switcher de Prototipo para evaluación cliente -->
+  <aside class="prototype-bar" aria-label="Selector de versión">
+    <div>
+      <span class="badge">Prototipo A</span>
+      <span>Versión One-Pager Continua (con modales de reserva y lectura profunda)</span>
+    </div>
+    <div>
+      <a href="./index.html">Ver Prototipo B (Multi-Página tradicional) →</a>
+    </div>
+  </aside>
+
+  <header>
+    <a class="brand" href="#inicio" aria-label="Nueva Alejandría Inicio">
+      <img src="./assets/logo.png" alt="Logo de Nueva Alejandría" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Nueva Alejandría</span>
+        <span class="brand-subtitle">Escuela para lo humano</span>
+      </div>
+    </a>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="main-nav" aria-label="Navegación principal">
+      <a href="#escuela">La escuela</a>
+      <a href="#fundadora">Fundadora</a>
+      <a href="#cursos">Cursos y talleres</a>
+      <a href="#consultas">Consultas individuales</a>
+      <a href="#escritos">Escritos</a>
+      <a href="#conversaciones">Conversaciones</a>
+      <a href="#consultas" class="nav-cta">Agendar hora</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="backdrop" role="img" aria-label="Detalle del Oratorio-laboratorio de Heinrich Khunrath"></div>
+
+      <div class="hero-copy">
+        <div class="eyebrow">Arte · pensamiento · vida interior</div>
+        <h1>Una puerta<br>al conocimiento.<br><em>Un camino<br>hacia lo humano.</em></h1>
+        <p class="intro">Un espacio de encuentro entre los saberes herméticos, la experiencia espiritual y el arte de comprender conscientemente nuestra propia vida.</p>
+        <div class="actions">
+          <a class="btn-primary" href="#cursos">Explorar cursos y talleres <span aria-hidden="true">↗</span></a>
+          <a class="btn-secondary" href="#consultas">Consultas individuales</a>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <span>H. KHUNRATH · ORATORIO–LABORATORIO · 1609</span>
+        <div class="tools">
+          <button id="toggle-tone" aria-pressed="false">Más contraste ◐</button>
+          <button id="open-art">Ver grabado completo ↗</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 01: LA ESCUELA & FUNDADORA -->
+    <section class="section" id="escuela">
+      <div class="section-header">
+        <div class="section-eyebrow">§ I — La Escuela</div>
+        <h2 class="section-title">Donde los saberes dialogan con la profundidad del alma.</h2>
+        <p class="section-lead">Frente a la dispersión contemporánea, Nueva Alejandría recupera la vocación del estudio pausado: integrar filosofía, mitología, arte y astrología como herramientas vivas de autoconocimiento.</p>
+      </div>
+
+      <div class="school-grid">
+        <div class="manifesto-body">
+          <p>Nueva Alejandría nació del anhelo de tender un puente entre la tradición sapiencial de Occidente y las preguntas íntimas de quienes buscan habitar su tiempo con lucidez. No concebimos el saber como una fría acumulación académica ni como un manual de certezas prefabricadas, sino como un umbral transformador.</p>
+          <p>En nuestras aulas y espacios de conversación, los mitos de la antigüedad grecolatina, las metáforas alquímicas del Renacimiento y la cartografía simbólica de la carta natal se entrelazan para revelar el sentido subyacente a nuestras biografías.</p>
+
+          <div class="manifesto-pillars">
+            <div class="pillar-item">
+              <span class="pillar-num">I.</span>
+              <div class="pillar-content">
+                <h4>El Símbolo como Cartografía</h4>
+                <p>Mirar los símbolos no como superstición, sino como el lenguaje arquetípico más preciso para dialogar con el inconsciente y las estaciones vitales.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-num">II.</span>
+              <div class="pillar-content">
+                <h4>La Biografía como Creación</h4>
+                <p>Comprender las crisis y encrucijadas personales como procesos de maduración indispensables dentro del propio desarrollo humano.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-num">III.</span>
+              <div class="pillar-content">
+                <h4>El Oratorio y el Laboratorio</h4>
+                <p>Inspirados en Khunrath: cultivar tanto la quietud contemplativa (el oratorio) como la indagación rigurosa y activa en el mundo (el laboratorio).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfil Fundadora: Retrato Editorial -->
+        <aside class="founder-card" id="fundadora">
+          <figure class="founder-portrait-figure">
+            <img src="./assets/plate_7.jpeg" alt="Retrato editorial de Alejandra Silva Pérez" class="founder-portrait-img">
+            <figcaption class="founder-portrait-caption">Alejandra Silva Pérez · Santiago de Chile</figcaption>
+          </figure>
+          <div class="founder-names">
+            <h3>Alejandra Silva Pérez</h3>
+            <span>Fundadora & Directora de Nueva Alejandría</span>
+          </div>
+          <div class="founder-bio">
+            <p>Periodista de formación, astróloga e investigadora de tradiciones humanistas. Durante más de una década ha dedicado su labor al acompañamiento individual y a la docencia en torno a los arquetipos, la mitología comparada y la psicología de la experiencia interior.</p>
+          </div>
+          <blockquote class="founder-quote">
+            «Acompañar a una persona no consiste en predecir su destino, sino en devolverle la dignidad y la belleza de comprender su propia historia.»
+          </blockquote>
+          <div class="founder-credentials">
+            <div>— Licenciada en Comunicación & Periodismo</div>
+            <div>— Especialista en Astrología Humanista & Biográfica</div>
+            <div>— Terapeuta y facilitadora de círculos de estudio</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 02: CURSOS Y TALLERES (ENCUENTROS FORMATIVOS) -->
+    <section class="section courses-section" id="cursos">
+      <div class="section-header">
+        <div class="section-eyebrow">§ II — Encuentros Formativos</div>
+        <h2 class="section-title">Cursos y Talleres</h2>
+        <p class="section-lead">Instancias sincrónicas y presenciales de estudio riguroso, diseñadas para profundizar en los símbolos y el arte de la mirada interior. Cupos deliberadamente acotados para garantizar el diálogo.</p>
+      </div>
+
+      <div class="courses-grid">
+        <!-- Curso 1 -->
+        <article class="course-card">
+          <div>
+            <span class="course-badge">Online en Vivo · 6 Semanas</span>
+            <h3 class="course-title">El Lenguaje de los Símbolos: Mito, Tarot y Alquimia</h3>
+            <p class="course-desc">Un recorrido por las imágenes primordiales que estructuran la psique humana. Estudiaremos la iconografía hermética, los arcanos mayores y los mitos clásicos como espejos de nuestro mundo interno.</p>
+            <ul class="course-meta">
+              <li><strong>Inicio:</strong> 14 de Abril, 2026</li>
+              <li><strong>Horario:</strong> Martes 19:30 a 21:30 hrs (Chile / Zoom)</li>
+              <li><strong>Cupos:</strong> 15 participantes (Incluye grabaciones y lecturas)</li>
+            </ul>
+          </div>
+          <div class="course-footer">
+            <div class="course-price">
+              <span class="amount">$85.000 CLP</span>
+              <span class="note">o $95 USD internacional</span>
+            </div>
+            <button class="btn-reserve" data-course="El Lenguaje de los Símbolos" data-price="$85.000 CLP / $95 USD">Reservar cupo →</button>
+          </div>
+        </article>
+
+        <!-- Curso 2 -->
+        <article class="course-card">
+          <div>
+            <span class="course-badge">Programa Cuatrimestral</span>
+            <h3 class="course-title">Astrología Humanista: La Geometría de la Carta Natal</h3>
+            <p class="course-desc">Formación integral en lectura de carta natal desde el paradigma humanista y transpersonal. Signos, planetas, casas y tránsitos entendidos como un mapa biográfico evolutivo.</p>
+            <ul class="course-meta">
+              <li><strong>Inicio:</strong> 7 de Mayo, 2026</li>
+              <li><strong>Horario:</strong> Jueves 19:00 a 21:30 hrs (16 sesiones)</li>
+              <li><strong>Incluye:</strong> Laboratorios prácticos de lectura sobre casos reales</li>
+            </ul>
+          </div>
+          <div class="course-footer">
+            <div class="course-price">
+              <span class="amount">$190.000 CLP</span>
+              <span class="note">Facilidades en 3 cuotas o $210 USD</span>
+            </div>
+            <button class="btn-reserve" data-course="Astrología Humanista: Carta Natal" data-price="$190.000 CLP / $210 USD">Reservar cupo →</button>
+          </div>
+        </article>
+
+        <!-- Curso 3 -->
+        <article class="course-card">
+          <div>
+            <span class="course-badge">Taller Intensivo · Presencial</span>
+            <h3 class="course-title">El Oratorio y el Laboratorio: Taller de Cartografía Interior</h3>
+            <p class="course-desc">Jornada vivencial en Santiago inspirada en el grabado de Khunrath. Un espacio para traducir la reflexión interior en un diario simbólico, clarificando el momento vital presente.</p>
+            <ul class="course-meta">
+              <li><strong>Fecha:</strong> Sábado 23 de Mayo, 2026</li>
+              <li><strong>Lugar:</strong> Espacio Providencia, Santiago (10:00 a 14:00 hrs)</li>
+              <li><strong>Materiales:</strong> Cuaderno artesanal y guía de trabajo incluidos</li>
+            </ul>
+          </div>
+          <div class="course-footer">
+            <div class="course-price">
+              <span class="amount">$48.000 CLP</span>
+              <span class="note">12 cupos exclusivos</span>
+            </div>
+            <button class="btn-reserve" data-course="Taller: El Oratorio y el Laboratorio" data-price="$48.000 CLP">Reservar cupo →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 03: CONSULTAS INDIVIDUALES (ACOMPAÑAMIENTO BIOGRÁFICO) -->
+    <section class="section consultations-section" id="consultas">
+      <div class="section-header">
+        <div class="section-eyebrow">§ III — Acompañamiento Biográfico</div>
+        <h2 class="section-title">Consultas Individuales</h2>
+        <p class="section-lead">Un encuentro pausado y personal con Alejandra Silva para examinar el mapa de tu nacimiento, situar los tránsitos vitales actuales y encontrar perspectiva en momentos de transición.</p>
+      </div>
+
+      <div class="consultation-box">
+        <div class="consultation-info">
+          <h3>Lectura de Carta Natal & Tránsitos Biográficos</h3>
+          <p>La sesión individual es una conversación de 75 a 90 minutos concebida para iluminar las preguntas que hoy te convocan. No buscamos predicciones deterministas, sino cartografiar las fuerzas arquetípicas y los ciclos de maduración que estás transitando.</p>
+          
+          <div class="consultation-steps">
+            <div class="step-item">
+              <strong>1. Preparación previa</strong>
+              <span>Estudio detallado de tus coordenadas natales y efemérides antes del encuentro.</span>
+            </div>
+            <div class="step-item">
+              <strong>2. Diálogo en vivo</strong>
+              <span>Sesión presencial en Santiago o vía Zoom de alta resolución para todo el mundo.</span>
+            </div>
+            <div class="step-item">
+              <strong>3. Registro de audio</strong>
+              <span>Entrega de la grabación completa en formato MP3 para volver a escucharla con calma.</span>
+            </div>
+            <div class="step-item">
+              <strong>4. Carta gráfica</strong>
+              <span>Dossier visual con tu mandala natal y esquema de aspectos planetarios.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="consultation-cta-card">
+          <span class="tag">Espacio de Consulta</span>
+          <div class="price">$58.000 CLP</div>
+          <div class="price-intl">o $68 USD vía PayPal / Tarjeta</div>
+          <ul>
+            <li>Duración: 75 a 90 minutos</li>
+            <li>Modalidad: Online o Presencial</li>
+            <li>Incluye carta y audio de la sesión</li>
+            <li>Horas disponibles de lunes a viernes</li>
+          </ul>
+          <button class="btn-book-now" id="btn-open-booking">Agendar mi consulta individual →</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 04: ESCRITOS Y REFLEXIONES (ÍNDICE LITERARIO) -->
+    <section class="section essays-section" id="escritos">
+      <div class="section-header">
+        <div class="section-eyebrow">§ IV — Bitácora del Saber</div>
+        <h2 class="section-title">Escritos y Reflexiones</h2>
+        <p class="section-lead">Ensayos, notas al margen e indagaciones sobre el arte, los mitos y la psicología del alma humana. Lecturas cuidadas para cultivar el pensamiento.</p>
+      </div>
+
+      <div class="essays-index">
+        <!-- Ensayo 1 -->
+        <article class="essay-card" data-essay="khunrath">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Filosofía Hermética</span>
+            <time class="essay-date">18 Mar 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">El Oratorio y el Laboratorio: La reconciliación entre la plegaria y el experimento</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">En 1609, Heinrich Khunrath publicó un grabado que resume el drama de la condición humana: a la izquierda, el rezo silencioso ante la luz divina; a la derecha, los alambiques y fuegos de la transformación material...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+
+        <!-- Ensayo 2 -->
+        <article class="essay-card" data-essay="saturno">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Astrología Biográfica</span>
+            <time class="essay-date">02 Feb 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">Saturno y el Retorno de los 29 Años: El peso del tiempo como forja</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">La tradición astrológica temió a Saturno como el gran maléfico, pero la mirada humanista revela su verdadera naturaleza: es el arquitecto interior que nos arranca de las fantasías juveniles para exigirnos realidad...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+
+        <!-- Ensayo 3 -->
+        <article class="essay-card" data-essay="mitos">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Mitología & Alma</span>
+            <time class="essay-date">14 Ene 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">El Laberinto de Creta: Por qué el mito de Ariadna sigue curando hoy</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">Todos entramos alguna vez al laberinto de una crisis personal. La lucidez de los antiguos griegos consistió en recordarnos que la espada de Teseo no sirve de nada sin el hilo sutil de la paciencia y el amor de Ariadna...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 05: CONVERSACIONES & MEDIOS REALES -->
+    <section class="section conversations-section" id="conversaciones">
+      <div class="section-header">
+        <div class="section-eyebrow">§ V — Conversaciones & Medios</div>
+        <h2 class="section-title">Conversaciones & Medios</h2>
+        <p class="section-lead">Diálogos en profundidad, reflexiones en audio y transmisiones en video donde Alejandra Silva explora el sentido de habitar conscientemente la experiencia humana.</p>
+      </div>
+
+      <div class="media-showcase-grid">
+        <!-- 01: SPOTIFY EPISODE -->
+        <article class="media-feature-card">
+          <div>
+            <span class="media-badge">Spotify · Episodio de Podcast</span>
+            <h2>El camino del medio: una experiencia terrenal</h2>
+            <p>Conversación junto a Caro Ulloa Osses en su podcast de terapia familiar y de pareja. Una mirada lúcida sobre la tentación de la evasión espiritual y la necesidad urgente de traer la sabiduría al cuerpo, a los vínculos cotidianos y a la realidad tangible de nuestra biografía.</p>
+            <a class="media-btn" href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">
+              <span>Escuchar en Spotify</span> →
+            </a>
+          </div>
+
+          <div class="embed-frame-wrapper">
+            <iframe class="spotify-frame" src="https://open.spotify.com/embed/episode/7EirnCvvLCarYNSZN8FS6R?utm_source=generator&theme=0" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify - El camino del medio"></iframe>
+          </div>
+        </article>
+
+        <!-- 02: YOUTUBE VIDEO -->
+        <article class="media-feature-card">
+          <div>
+            <span class="media-badge">YouTube · Encuentro en Video</span>
+            <h2>Vivir en la realidad: los cuentos que nos contamos</h2>
+            <p>Una conferencia en video dedicada a desmantelar los autoengaños y las ilusiones que construimos para protegernos del dolor de crecer. Alejandra y Caro examinan cómo recuperar la sobriedad y la valentía necesarias para habitar la verdad de lo que somos.</p>
+            <a class="media-btn" href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">
+              <span>Ver conversación en YouTube</span> →
+            </a>
+          </div>
+
+          <div class="embed-frame-wrapper">
+            <div class="video-embed-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/FjXZBH9Mf_I" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tríptico de Aforismos Instagram -->
+      <div class="ig-triptych-section">
+        <div class="ig-triptych-head">
+          <div>
+            <span class="ig-eyebrow">Cuaderno Abierto</span>
+            <h3>Alejandra en Instagram · @aledealejandria</h3>
+          </div>
+          <a class="media-link" href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">Seguir a @aledealejandria →</a>
+        </div>
+        <div class="ig-triptych">
+          <div class="ig-aphorism">
+            <span class="ig-tag">Mito & Símbolo</span>
+            <p class="ig-text">«No buscamos iluminarnos para escapar del barro de la vida humana, sino aprender a plantar flores en él.»</p>
+            <span class="ig-date">Publicado en @aledealejandria</span>
+          </div>
+          <div class="ig-aphorism">
+            <span class="ig-tag">Astrología Viva</span>
+            <p class="ig-text">«Saturno no pide que dejes de soñar; pide que el sueño tenga peso, estructura y la paciencia del artesano.»</p>
+            <span class="ig-date">Publicado en @aledealejandria</span>
+          </div>
+          <div class="ig-aphorism">
+            <span class="ig-tag">Citas & Escuela</span>
+            <p class="ig-text">«El oratorio es el silencio necesario para escuchar lo que el ruido del mundo intenta callar en tu interior.»</p>
+            <span class="ig-date">Publicado en @aledealejandria</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 06: CONTACTO & CARTA ABIERTA -->
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="section-eyebrow" style="justify-content: center;">§ VI — El Umbral Abierto</div>
+        <h2>El conocimiento también es un encuentro.</h2>
+        <p>Si deseas recibir los ensayos mensuales, informarte antes que nadie sobre las aperturas de cupos o hacer una consulta específica sobre la escuela, escríbenos con total libertad.</p>
+        <div class="contact-actions">
+          <button class="btn-primary" id="btn-open-contact">Escribir a la escuela →</button>
+          <a class="btn-secondary" href="#inicio">Volver al inicio ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EDITORIAL -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-title">Nueva Alejandría</div>
+        <div class="brand-subtitle">Escuela para lo humano</div>
+        <p>Un espacio dedicado al estudio del alma, los lenguajes simbólicos y la reconciliación entre el intelecto y la vida interior.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#escuela">La Escuela</a></li>
+          <li><a href="#fundadora">Alejandra Silva</a></li>
+          <li><a href="#cursos">Cursos y Talleres</a></li>
+          <li><a href="#consultas">Consultas Individuales</a></li>
+          <li><a href="#escritos">Escritos y Ensayos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Formatos</h5>
+        <ul>
+          <li><a href="./nueva_alejandría.html">Versión One-Pager</a></li>
+          <li><a href="./index.html">Versión Multi-Página</a></li>
+          <li><a href="#open-art" id="footer-art-link">Lámina de Khunrath</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contacto & Redes</h5>
+        <ul>
+          <li><a href="mailto:contacto@nuevaalejandria.cl">contacto@nuevaalejandria.cl</a></li>
+          <li><a href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">@aledealejandria (Instagram)</a></li>
+          <li><a href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">Podcast en Spotify</a></li>
+          <li><a href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">Diálogos en YouTube</a></li>
+          <li>Santiago de Chile</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Nueva Alejandría · Escuela para lo humano · Todos los derechos reservados.</span>
+      <span>Grabado: H. Khunrath (1609) · Dominio Público</span>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: Grabado Khunrath Completo -->
+  <dialog id="modal-art">
+    <div class="modal-head">
+      <h3>Heinrich Khunrath · Oratorio–Laboratorio (1609)</h3>
+      <button class="modal-close-btn" id="close-art" aria-label="Cerrar modal">×</button>
+    </div>
+    <div class="modal-content-area" style="padding: 0; background: #0c101d;">
+      <img src="./assets/Rar9441_Labor.jpg" alt="Lámina completa del Oratorio-laboratorio de Khunrath" style="width: 100%; max-height: 75vh; object-fit: contain; display: block;">
+    </div>
+  </dialog>
+
+  <!-- MODAL 2: MOCKUP RESERVA DE CURSO / TALLER -->
+  <dialog id="modal-reserve">
+    <div class="modal-head">
+      <h3 id="reserve-modal-title">Reservar cupo en taller</h3>
+      <button class="modal-close-btn" id="close-reserve" aria-label="Cerrar modal">×</button>
+    </div>
+    <div class="modal-content-area">
+      <div id="reserve-form-step">
+        <form class="mockup-form" id="course-reservation-form">
+          <div class="form-summary">
+            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: .18em; color: var(--teal); font-weight: 700;">Curso seleccionado:</span>
+            <strong id="summary-course-name">El Lenguaje de los Símbolos</strong>
+            <div id="summary-course-price" style="font-size: 13px; color: var(--ink);">Valor: $85.000 CLP / $95 USD</div>
+          </div>
+
+          <div class="mockup-notice">
+            <span><strong>Mockup interactivo:</strong> Simula el proceso de reserva y pago para demostración de la web.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-name">Nombre completo</label>
+              <input type="text" id="res-name" required placeholder="Ej: Constanza Valdés">
+            </div>
+            <div class="form-group">
+              <label for="res-email">Correo electrónico</label>
+              <input type="email" id="res-email" required placeholder="nombre@correo.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="res-phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="res-phone" placeholder="+56 9 1234 5678">
+            </div>
+            <div class="form-group">
+              <label for="res-payment">Medio de pago preferido</label>
+              <select id="res-payment">
+                <option value="transfer">Transferencia bancaria nacional (CLP)</option>
+                <option value="webpay">Webpay / Tarjetas Débito o Crédito</option>
+                <option value="paypal">PayPal internacional (USD)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="res-notes">¿Tienes experiencia previa en este tema? (Opcional)</label>
+            <textarea id="res-notes" rows="2" placeholder="Breve comentario o motivación..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-form">Confirmar solicitud de cupo →</button>
+        </form>
+      </div>
+
+      <!-- Estado de confirmación simulado -->
+      <div class="confirmation-state" id="reserve-confirmation">
+        <div class="confirmation-icon">❦</div>
+        <h4>¡Reserva solicitada con éxito!</h4>
+        <p>Hemos simulado el registro para <strong id="confirmed-course-name"></strong>. En la versión definitiva, el alumno recibe las instrucciones de acceso a Zoom o sala presencial y el comprobante de pago.</p>
+        <button class="btn-primary" id="btn-finish-reserve" style="margin: auto;">Entendido, cerrar ventana</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- MODAL 3: MOCKUP AGENDAMIENTO CONSULTA INDIVIDUAL -->
+  <dialog id="modal-booking">
+    <div class="modal-head">
+      <h3>Agendar Consulta Individual</h3>
+      <button class="modal-close-btn" id="close-booking" aria-label="Cerrar modal">×</button>
+    </div>
+    <div class="modal-content-area">
+      <div id="booking-form-step">
+        <form class="mockup-form" id="consultation-booking-form">
+          <div class="form-summary">
+            <strong>Lectura de Carta Natal & Acompañamiento Biográfico</strong>
+            <span style="font-size: 12px;">Sesión de 75 a 90 min con Alejandra Silva · $58.000 CLP / $68 USD</span>
+          </div>
+
+          <div class="mockup-notice">
+            <span><strong>Mockup interactivo:</strong> Selector de fecha y datos de nacimiento para confeccionar la carta natal.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-name">Nombre completo</label>
+              <input type="text" id="book-name" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="book-email">Correo electrónico</label>
+              <input type="email" id="book-email" required placeholder="tu@email.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-modality">Modalidad preferida</label>
+              <select id="book-modality">
+                <option value="online">Online vía Zoom (Grabación en alta definición)</option>
+                <option value="presencial">Presencial (Providencia, Santiago de Chile)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="book-slot">Horario simulado disponible</label>
+              <select id="book-slot">
+                <option>Martes 14 de Abril · 10:30 hrs</option>
+                <option>Martes 14 de Abril · 16:00 hrs</option>
+                <option>Jueves 16 de Abril · 11:30 hrs</option>
+                <option>Viernes 17 de Abril · 17:00 hrs</option>
+                <option>Lunes 20 de Abril · 15:30 hrs</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--line); padding-top: 14px; margin-top: 6px;">
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--teal); margin-bottom: 10px;">Datos natales indispensables:</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="book-birthdate">Fecha de nacimiento</label>
+                <input type="date" id="book-birthdate" required>
+              </div>
+              <div class="form-group">
+                <label for="book-birthtime">Hora exacta (del certificado de nacimiento)</label>
+                <input type="time" id="book-birthtime" required>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="book-birthplace">Ciudad y país de nacimiento</label>
+              <input type="text" id="book-birthplace" required placeholder="Ej: Santiago, Chile">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit-form">Confirmar agendamiento de sesión →</button>
+        </form>
+      </div>
+
+      <!-- Confirmación de Consulta -->
+      <div class="confirmation-state" id="booking-confirmation">
+        <div class="confirmation-icon">❦</div>
+        <h4>¡Consulta agendada con éxito!</h4>
+        <p>Tu sesión ha sido pre-registrada en el sistema. Alejandra Silva revisará tus datos natales para preparar el mapa de tránsitos antes de la reunión.</p>
+        <button class="btn-primary" id="btn-finish-booking" style="margin: auto;">Cerrar y continuar navegando</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- MODAL 4: LECTOR EDITORIAL DE ENSAYOS: PLIEGO LITERARIO -->
+  <dialog id="modal-essay-reader">
+    <div class="modal-head">
+      <div>
+        <h3>Cuaderno de Alejandría · Ensayo</h3>
+        <span class="reading-time-indicator">Tiempo estimado de lectura: ~5 min</span>
+      </div>
+      <button class="modal-close-btn" id="close-essay-reader" aria-label="Cerrar lectura">×</button>
+    </div>
+    <div class="modal-content-area">
+      <article class="essay-reader-article">
+        <h2 id="essay-full-title">Título del ensayo</h2>
+        <span class="essay-reader-meta" id="essay-full-meta">Categoría · Por Alejandra Silva Pérez</span>
+        <div class="essay-reader-body" id="essay-full-body">
+          <!-- Se rellena dinámicamente con texto reflexivo en español -->
+        </div>
+        <div class="essay-colophon">
+          <span class="colophon-mark">❦</span>
+          <p>Nueva Alejandría · Cuaderno de Ensayo y Pensamiento Humanista</p>
+          <p>Santiago de Chile · Primavera de 2026</p>
+          <button class="btn-close-folio" id="btn-close-reader-bottom">Cerrar pliego de lectura</button>
+        </div>
+      </article>
+    </div>
+  </dialog>
+
+  <!-- MODAL 5: CONTACTO RÁPIDO -->
+  <dialog id="modal-contact">
+    <div class="modal-head">
+      <h3>Escribir a Nueva Alejandría</h3>
+      <button class="modal-close-btn" id="close-contact" aria-label="Cerrar">×</button>
+    </div>
+    <div class="modal-content-area">
+      <div id="contact-form-step">
+        <form class="mockup-form" id="school-contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Tu nombre</label>
+              <input type="text" id="contact-name" required placeholder="Nombre y apellido">
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Correo de respuesta</label>
+              <input type="email" id="contact-email" required placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Asunto</label>
+            <select id="contact-subject">
+              <option>Consulta sobre cursos o talleres</option>
+              <option>Dudas sobre la consulta individual</option>
+              <option>Propuesta de colaboración o entrevista</option>
+              <option>Inscripción al boletín de ensayos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-msg">Mensaje</label>
+            <textarea id="contact-msg" rows="4" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit-form">Enviar mensaje →</button>
+        </form>
+      </div>
+      <div class="confirmation-state" id="contact-confirmation">
+        <div class="confirmation-icon">❦</div>
+        <h4>Mensaje enviado correctamente</h4>
+        <p>Gracias por escribir. Alejandra o el equipo de la escuela se pondrán en contacto contigo dentro de las próximas 24 horas hábiles.</p>
+        <button class="btn-primary" id="btn-finish-contact" style="margin: auto;">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JAVASCRIPT DE INTERACCIÓN & MODALES -->
+  <script>
+    // 1. Menú móvil
+    const menuToggle = document.querySelector('#menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    if (menuToggle && mainNav) {
+      menuToggle.onclick = () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.onclick = () => {
+          mainNav.classList.remove('nav-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        };
+      });
+    }
+
+    // 2. Control de tono / contraste del Hero
+    const hero = document.querySelector('.hero');
+    const toneBtn = document.querySelector('#toggle-tone');
+    if (toneBtn && hero) {
+      toneBtn.onclick = () => {
+        const active = hero.classList.toggle('high-contrast');
+        toneBtn.setAttribute('aria-pressed', String(active));
+        toneBtn.textContent = active ? 'Contraste normal ◐' : 'Más contraste ◐';
+      };
+    }
+
+    // 3. Modal Lámina de Arte
+    const modalArt = document.querySelector('#modal-art');
+    const openArtBtn = document.querySelector('#open-art');
+    const closeArtBtn = document.querySelector('#close-art');
+    const footerArtLink = document.querySelector('#footer-art-link');
+    if (modalArt) {
+      if (openArtBtn) openArtBtn.onclick = () => modalArt.showModal();
+      if (closeArtBtn) closeArtBtn.onclick = () => modalArt.close();
+      if (footerArtLink) footerArtLink.onclick = (e) => { e.preventDefault(); modalArt.showModal(); };
+    }
+
+    // 4. Modal Reserva de Cursos
+    const modalReserve = document.querySelector('#modal-reserve');
+    const closeReserveBtn = document.querySelector('#close-reserve');
+    const reserveForm = document.querySelector('#course-reservation-form');
+    const reserveFormStep = document.querySelector('#reserve-form-step');
+    const reserveConfirmation = document.querySelector('#reserve-confirmation');
+    const btnFinishReserve = document.querySelector('#btn-finish-reserve');
+    const summaryCourseName = document.querySelector('#summary-course-name');
+    const summaryCoursePrice = document.querySelector('#summary-course-price');
+    const confirmedCourseName = document.querySelector('#confirmed-course-name');
+
+    document.querySelectorAll('.btn-reserve').forEach(btn => {
+      btn.onclick = () => {
+        const courseName = btn.getAttribute('data-course');
+        const coursePrice = btn.getAttribute('data-price');
+        summaryCourseName.textContent = courseName;
+        summaryCoursePrice.textContent = 'Valor: ' + coursePrice;
+        confirmedCourseName.textContent = courseName;
+        reserveFormStep.style.display = 'block';
+        reserveConfirmation.style.display = 'none';
+        modalReserve.showModal();
+      };
+    });
+
+    if (closeReserveBtn) closeReserveBtn.onclick = () => modalReserve.close();
+    if (btnFinishReserve) btnFinishReserve.onclick = () => modalReserve.close();
+
+    if (reserveForm) {
+      reserveForm.onsubmit = (e) => {
+        e.preventDefault();
+        reserveFormStep.style.display = 'none';
+        reserveConfirmation.style.display = 'block';
+      };
+    }
+
+    // 5. Modal Agendamiento Consulta Individual
+    const modalBooking = document.querySelector('#modal-booking');
+    const btnOpenBooking = document.querySelector('#btn-open-booking');
+    const closeBookingBtn = document.querySelector('#close-booking');
+    const bookingForm = document.querySelector('#consultation-booking-form');
+    const bookingFormStep = document.querySelector('#booking-form-step');
+    const bookingConfirmation = document.querySelector('#booking-confirmation');
+    const btnFinishBooking = document.querySelector('#btn-finish-booking');
+
+    if (btnOpenBooking) {
+      btnOpenBooking.onclick = () => {
+        bookingFormStep.style.display = 'block';
+        bookingConfirmation.style.display = 'none';
+        modalBooking.showModal();
+      };
+    }
+    if (closeBookingBtn) closeBookingBtn.onclick = () => modalBooking.close();
+    if (btnFinishBooking) btnFinishBooking.onclick = () => modalBooking.close();
+
+    if (bookingForm) {
+      bookingForm.onsubmit = (e) => {
+        e.preventDefault();
+        bookingFormStep.style.display = 'none';
+        bookingConfirmation.style.display = 'block';
+      };
+    }
+
+    // 6. Ensayos y Lector Modal
+    const essaysData = {
+      khunrath: {
+        title: "El Oratorio y el Laboratorio: La reconciliación entre la plegaria y el experimento",
+        meta: "Filosofía Hermética · Heinrich Khunrath y el Renacimiento",
+        body: `
+          <p>Cuando Heinrich Khunrath publicó en 1609 su <em>Amphitheatrum sapientiae aeternae</em>, incluyó una lámina circular que sintetiza como pocas la encrucijada del pensamiento europeo antes de la fractura cartesiana. En esa amplia sala abovedada conviven dos estancias que hoy juzgamos incompatibles: el <strong>oratorium</strong>, donde el filósofo reza arrodillado frente al tabernáculo y la luz divina, y el <strong>laboratorium</strong>, donde hierven retortas, se apilan hornos y reposan frascos de sustancias alquímicas.</p>
+          <blockquote>«Non omnibus datum est adire Corinthum: no a todos les es dado llegar a Corinto sin haber purificado antes su propia mirada interior.»</blockquote>
+          <p>Para la mentalidad renacentista, la transformación de la materia en el laboratorio era estéril sin la correspondiente transmutación del corazón en el oratorio. La ciencia sin mística conduce a la depredación técnica; la mística sin trabajo paciente degenera en delirio ilusorio. Khunrath nos recuerda que la verdadera sabiduría nace en el punto exacto donde la contemplación silenciosa fecunda el compromiso activo con el mundo.</p>
+          <p>En Nueva Alejandría hemos querido que este grabado presida nuestra casa porque encarna nuestra pedagogía: estudiar la astrología, la mitología y las humanidades no como un pasatiempo abstracto, sino como un laboratorio íntimo donde cada individuo templa su propia verdad.</p>
+        `
+      },
+      saturno: {
+        title: "Saturno y el Retorno de los 29 Años: El peso del tiempo como forja",
+        meta: "Astrología Biográfica & Psicología Arquetípica",
+        body: `
+          <p>Entre los veintiocho y los treinta años de vida, el planeta Saturno completa su primera órbita completa en torno al Sol y regresa exactamente al grado zodiacal que ocupaba en el instante de nuestro nacimiento. Para la astrología tradicional, Saturno era el <em>gran maléfico</em>: el anciano con la hoz, el invierno estéril, el verdugo de las esperanzas.</p>
+          <p>Sin embargo, vista desde la psicología profunda, la crisis del retorno saturnino no es un castigo, sino una bendición austera. Saturno llega para poner término a la adolescencia prolongada. Destruye con precisión implacable aquellas estructuras de vida que fueron edificadas sobre el mandato familiar, la complacencia ajena o las fantasías infantiles de omnipotencia.</p>
+          <blockquote>«El peso no busca hundirte; busca comprobar si los cimientos de tu casa son de piedra o de arena.»</blockquote>
+          <p>Aprender a recibir a Saturno es el inicio de la auténtica adultez. Quien atraviesa con lucidez este umbral descubre que los límites, las renuncias deliberadas y la paciencia no son cadenas que nos encarcelan, sino las murallas protectoras dentro de las cuales el alma por fin puede consolidar su obra propia.</p>
+        `
+      },
+      mitos: {
+        title: "El Laberinto de Creta: Por qué el mito de Ariadna sigue curando hoy",
+        meta: "Mitología Clásica & Arquetipos",
+        body: `
+          <p>La mitología no es un conjunto de fábulas ingenuas inventadas por pueblos primitivos; es la psicología más depurada de la civilización humana. El laberinto de Minos en Creta, con su monstruo mitad hombre y mitad toro devorando a los jóvenes atenienses, no es otra cosa que el relato arquetípico de una sociedad atrapada en su propia crueldad instintiva y su codicia.</p>
+          <p>Cuando Teseo desciende a las entrañas de la oscuridad, lleva consigo una espada afilada, el símbolo de la razón y la fuerza de voluntad. Pero la fuerza y la razón son ciegas en la tiniebla si no cuentan con una aliada fundamental: el ovillo de hilo dorado que le entrega Ariadna.</p>
+          <blockquote>«La espada puede vencer a la bestia, pero solo el hilo del amor consciente sabe cómo desandar el camino de regreso hacia la luz del día.»</blockquote>
+          <p>En nuestras consultas y talleres insistimos constantemente en este pasaje: en las crisis biográficas contemporáneas abundan las recetas enérgicas de superación, pero casi nadie enseña a tejer el hilo que nos permite mantenernos vinculados a nuestro centro vital. Recuperar a Ariadna es recuperar la ternura y la paciencia necesarias para no perdernos en la propia sombra.</p>
+        `
+      }
+    };
+
+    const modalEssay = document.querySelector('#modal-essay-reader');
+    const closeEssayBtn = document.querySelector('#close-essay-reader');
+    const btnCloseReaderBottom = document.querySelector('#btn-close-reader-bottom');
+    const essayTitle = document.querySelector('#essay-full-title');
+    const essayMeta = document.querySelector('#essay-full-meta');
+    const essayBody = document.querySelector('#essay-full-body');
+
+    document.querySelectorAll('.essay-card').forEach(card => {
+      card.onclick = () => {
+        const key = card.getAttribute('data-essay');
+        const data = essaysData[key];
+        if (data) {
+          essayTitle.textContent = data.title;
+          essayMeta.textContent = data.meta;
+          essayBody.innerHTML = data.body;
+          modalEssay.showModal();
+        }
+      };
+    });
+
+    if (closeEssayBtn) closeEssayBtn.onclick = () => modalEssay.close();
+    if (btnCloseReaderBottom) btnCloseReaderBottom.onclick = () => modalEssay.close();
+
+    // 7. Modal Contacto
+    const modalContact = document.querySelector('#modal-contact');
+    const btnOpenContact = document.querySelector('#btn-open-contact');
+    const closeContactBtn = document.querySelector('#close-contact');
+    const contactForm = document.querySelector('#school-contact-form');
+    const contactFormStep = document.querySelector('#contact-form-step');
+    const contactConfirmation = document.querySelector('#contact-confirmation');
+    const btnFinishContact = document.querySelector('#btn-finish-contact');
+
+    if (btnOpenContact) {
+      btnOpenContact.onclick = () => {
+        contactFormStep.style.display = 'block';
+        contactConfirmation.style.display = 'none';
+        modalContact.showModal();
+      };
+    }
+    if (closeContactBtn) closeContactBtn.onclick = () => modalContact.close();
+    if (btnFinishContact) btnFinishContact.onclick = () => modalContact.close();
+
+    if (contactForm) {
+      contactForm.onsubmit = (e) => {
+        e.preventDefault();
+        contactFormStep.style.display = 'none';
+        contactConfirmation.style.display = 'block';
+      };
+    }
+
+    // Cerrar modales haciendo click fuera del contenido (en el backdrop)
+    [modalArt, modalReserve, modalBooking, modalEssay, modalContact].forEach(modal => {
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.close();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

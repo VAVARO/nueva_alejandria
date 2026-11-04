@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversaciones & Medios · Nueva Alejandría</title>
+  <meta name="description" content="Entrevistas, podcast y reflexiones en audio y video de Alejandra Silva y Nueva Alejandría en Spotify, YouTube e Instagram.">
+  
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fcfdfa;
+      --paper-warm: #f6f3ec;
+      --ink: #1B1851;
+      --teal: #30B1AC;
+      --teal-hover: #26928e;
+      --line: rgba(27, 24, 81, 0.15);
+      --line-subtle: rgba(27, 24, 81, 0.08);
+      --text-muted: #4a4f65;
+      --text-light: #737890;
+      --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", "Acumin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper-warm);
+      color: var(--ink);
+      font: 16px/1.65 var(--font-sans);
+      font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .prototype-bar {
+      background: var(--ink);
+      color: #e4f5f4;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 40;
+    }
+    .prototype-bar .badge {
+      background: var(--teal);
+      color: var(--ink);
+      padding: 2px 8px;
+      border-radius: 0;
+      font-weight: 700;
+      margin-right: 8px;
+      text-transform: uppercase;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+    .prototype-bar a { color: #ffffff; text-decoration: underline; text-underline-offset: 3px; }
+    @media (hover: hover) and (pointer: fine) {
+      .prototype-bar a:hover { color: var(--teal); }
+    }
+
+    header {
+      height: 105px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 243, 236, 0.94);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; color: var(--ink); }
+    .brand-logo { height: 54px; width: auto; display: block; object-fit: contain; }
+    .brand-text { display: flex; flex-direction: column; justify-content: center; }
+    .brand-title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+    .brand-subtitle { font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-top: 3px; }
+
+    nav { display: flex; gap: 26px; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .04em; }
+    nav a { transition: color 160ms var(--ease-out); position: relative; }
+    nav a.active { color: var(--teal); }
+    @media (hover: hover) and (pointer: fine) {
+      nav a:hover { color: var(--teal); }
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--teal);
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 10px 20px;
+      border: 1px solid var(--ink);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .04em;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-cta:hover { background: var(--teal) !important; border-color: var(--teal) !important; }
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); }
+
+    /* Page Banner */
+    .page-banner {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 85px 5% 65px;
+    }
+    .banner-inner { max-width: 1300px; margin: auto; }
+    .banner-eyebrow {
+      font: 600 11px var(--font-sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .banner-title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5.5vw, 68px);
+      line-height: 1.1;
+      font-weight: 600;
+      color: var(--ink);
+      max-width: 860px;
+    }
+    .banner-lead {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-top: 20px;
+    }
+
+    /* Contenido Multimedia */
+    .section { max-width: 1300px; margin: auto; padding: 85px 5%; }
+    .media-showcase-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 65px;
+    }
+    .media-feature-card {
+      background: transparent;
+      border-top: 1px solid var(--line);
+      padding: 50px 0 0 0;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .media-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .media-feature-card h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.2vw, 36px);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .media-feature-card p {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .btn-primary,
+    .media-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      text-decoration: none;
+    }
+    .btn-primary:hover,
+    @media (hover: hover) and (pointer: fine) {
+      .media-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Embeds Reales */
+    .embed-frame-wrapper {
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .spotify-frame {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+    .video-embed-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+    }
+    .video-embed-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Sección de Instagram: Tríptico de Aforismos */
+    .instagram-section {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding: 90px 5%;
+    }
+    .ig-header {
+      max-width: 1300px;
+      margin: 0 auto 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+    }
+    .ig-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .ig-header h2 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .ig-triptych {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .ig-aphorism {
+      padding: 50px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      background: transparent;
+    }
+    .ig-aphorism:not(:last-child) {
+      border-right: 1px solid var(--line);
+    }
+    .ig-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .ig-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--ink);
+      flex-grow: 1;
+    }
+    .ig-date {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer { background: var(--ink); color: #bcc3d4; padding: 60px 5% 40px; font-size: 13px; }
+    .footer-inner { max-width: 1300px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 40px; margin-bottom: 30px; }
+    .footer-brand .brand-title { color: #ffffff; font-size: 24px; }
+    .footer-brand .brand-subtitle { color: var(--teal); margin-top: 4px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: #a4adc2; }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-col a:hover { color: var(--teal); }
+    }
+    .footer-bottom { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; font-size: 12px; color: #727a94; }
+
+    @media (max-width: 900px) {
+      header { height: 80px; }
+      .menu-toggle { display: flex; }
+      nav { display: none; position: absolute; top: 80px; left: 0; right: 0; background: rgba(246, 243, 236, 0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 24px 8%; gap: 18px; border-bottom: 1px solid var(--line); }
+      nav.nav-open { display: flex; }
+      .media-feature-card { grid-template-columns: 1fr; padding: 40px 0 0 0; gap: 30px; }
+      .ig-triptych { grid-template-columns: 1fr; }
+      .ig-aphorism:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 10px; }
+      .prototype-bar { flex-direction: column; align-items: flex-start; font-size: 12px; }
+    }
+  
+    /* ===== Pulido de movimiento y accesibilidad ===== */
+    :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+    h1, h2, h3 { text-wrap: balance; }
+    p, blockquote, .essay-excerpt { text-wrap: pretty; }
+    h1, h2, h3, .brand-title { font-optical-sizing: auto; }
+
+    /* Foco de teclado visible en todas las páginas */
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    footer :focus-visible, .prototype-bar :focus-visible { outline-color: #ffffff; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 3px;
+    }
+    footer a:focus-visible, .prototype-bar a:focus-visible { outline-color: #ffffff; }
+
+    /* Respuesta al presionar */
+    .btn-primary, .nav-cta, .btn-reserve, .btn-reserve-action, .btn-book-action, .btn-book-now,
+    .btn-submit-form, .btn-close-folio, .btn-secondary, .media-btn {
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: 160ms;
+      transition-timing-function: var(--ease-out);
+    }
+    .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+    .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+    .btn-close-folio:active, .btn-secondary:active, .media-btn:active {
+      transform: scale(0.97);
+      transition-duration: 100ms;
+    }
+
+    /* Entrada y salida de modales (entra 220ms, sale 160ms) */
+    dialog {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out),
+                  overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open] {
+      opacity: 1;
+      transform: none;
+      transition-duration: 220ms;
+    }
+    @starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
+    dialog::backdrop {
+      opacity: 0;
+      transition: opacity 160ms var(--ease-out), overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open]::backdrop { opacity: 1; transition-duration: 220ms; }
+    @starting-style { dialog[open]::backdrop { opacity: 0; } }
+
+    /* Movimiento reducido: sin desplazamiento ni escala, se conservan opacidad y color */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      dialog, dialog[open] { transform: none; }
+      .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+      .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+      .btn-close-folio:active, .btn-secondary:active, .media-btn:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="prototype-bar" aria-label="Selector de versión">
+    <div>
+      <span class="badge">Prototipo B</span>
+      <span>Versión Multi-Página Tradicional · Conversaciones & Medios</span>
+    </div>
+    <div>
+      <a href="./nueva_alejandría.html#conversaciones">Ver en Prototipo A (One-Pager continuo) →</a>
+    </div>
+  </aside>
+
+  <header>
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="Logo de Nueva Alejandría" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Nueva Alejandría</span>
+        <span class="brand-subtitle">Escuela para lo humano</span>
+      </div>
+    </a>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav">
+      <a href="./escuela.html">La escuela</a>
+      <a href="./cursos.html">Cursos y talleres</a>
+      <a href="./consultas.html">Consultas individuales</a>
+      <a href="./escritos.html">Escritos</a>
+      <a href="./conversaciones.html" class="active">Conversaciones</a>
+      <a href="./consultas.html" class="nav-cta">Agendar hora</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="banner-inner">
+        <div class="banner-eyebrow">§ V — Divulgación & Diálogo</div>
+        <h1 class="banner-title">Conversaciones & Medios</h1>
+        <p class="banner-lead">Episodios de podcast, conferencias en video y reflexiones compartidas donde Alejandra Silva profundiza en los mitos, la psicología y la vocación de habitar la vida despiertos.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="media-showcase-grid">
+        <!-- 01: SPOTIFY EPISODE -->
+        <article class="media-feature-card">
+          <div>
+            <span class="media-badge">Spotify · Episodio de Podcast</span>
+            <h2>El camino del medio: una experiencia terrenal</h2>
+            <p>Conversación junto a Caro Ulloa Osses en su podcast de terapia familiar y de pareja. Una mirada lúcida sobre la tentación de la evasión espiritual y la necesidad urgente de traer la sabiduría al cuerpo, a los vínculos cotidianos y a la realidad tangible de nuestra biografía.</p>
+            <a class="media-btn" href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">
+              <span>Escuchar en Spotify</span> →
+            </a>
+          </div>
+
+          <div class="embed-frame-wrapper">
+            <iframe class="spotify-frame" src="https://open.spotify.com/embed/episode/7EirnCvvLCarYNSZN8FS6R?utm_source=generator&theme=0" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify - El camino del medio"></iframe>
+          </div>
+        </article>
+
+        <!-- 02: YOUTUBE VIDEO -->
+        <article class="media-feature-card">
+          <div>
+            <span class="media-badge">YouTube · Encuentro en Video</span>
+            <h2>Vivir en la realidad: los cuentos que nos contamos</h2>
+            <p>Una conferencia en video dedicada a desmantelar los autoengaños y las ilusiones que construimos para protegernos del dolor de crecer. Alejandra y Caro examinan cómo recuperar la sobriedad y la valentía necesarias para habitar la verdad de lo que somos.</p>
+            <a class="media-btn" href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">
+              <span>Ver conversación en YouTube</span> →
+            </a>
+          </div>
+
+          <div class="embed-frame-wrapper">
+            <div class="video-embed-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/FjXZBH9Mf_I" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 03: INSTAGRAM COMMUNITY -->
+    <section class="instagram-section">
+      <div class="ig-header">
+        <div>
+          <span class="ig-eyebrow">Cuaderno Abierto</span>
+          <h2>Alejandra en Instagram · @aledealejandria</h2>
+        </div>
+        <a class="media-btn" href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">
+          <span>Seguir @aledealejandria</span> →
+        </a>
+      </div>
+
+      <div class="ig-triptych">
+        <div class="ig-aphorism">
+          <span class="ig-tag">Mito & Símbolo</span>
+          <p class="ig-text">«No buscamos iluminarnos para escapar del barro de la vida humana, sino aprender a plantar flores en él.»</p>
+          <span class="ig-date">Publicado en @aledealejandria</span>
+        </div>
+
+        <div class="ig-aphorism">
+          <span class="ig-tag">Astrología Viva</span>
+          <p class="ig-text">«Saturno no pide que dejes de soñar; pide que el sueño tenga peso, estructura y la paciencia del artesano.»</p>
+          <span class="ig-date">Publicado en @aledealejandria</span>
+        </div>
+
+        <div class="ig-aphorism">
+          <span class="ig-tag">Citas & Escuela</span>
+          <p class="ig-text">«El oratorio es el silencio necesario para escuchar lo que el ruido del mundo intenta callar en tu interior.»</p>
+          <span class="ig-date">Publicado en @aledealejandria</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-title">Nueva Alejandría</div>
+        <div class="brand-subtitle">Escuela para lo humano</div>
+        <p>Un espacio dedicado al estudio del alma, los lenguajes simbólicos y la reconciliación entre el intelecto y la vida interior.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Páginas</h5>
+        <ul>
+          <li><a href="./escuela.html">La Escuela</a></li>
+          <li><a href="./cursos.html">Cursos y Talleres</a></li>
+          <li><a href="./consultas.html">Consultas Individuales</a></li>
+          <li><a href="./escritos.html">Escritos y Ensayos</a></li>
+          <li><a href="./conversaciones.html">Conversaciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Formatos</h5>
+        <ul>
+          <li><a href="./index.html">Versión Multi-Página</a></li>
+          <li><a href="./nueva_alejandría.html">Versión One-Pager</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto & Redes</h5>
+        <ul>
+          <li><a href="mailto:contacto@nuevaalejandria.cl">contacto@nuevaalejandria.cl</a></li>
+          <li><a href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">@aledealejandria (Instagram)</a></li>
+          <li><a href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">Podcast en Spotify</a></li>
+          <li><a href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">Diálogos en YouTube</a></li>
+          <li>Santiago de Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nueva Alejandría · Escuela para lo humano · Todos los derechos reservados.</span>
+      <span>Grabado: H. Khunrath (1609) · Dominio Público</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('#menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    if (menuToggle && mainNav) {
+      menuToggle.onclick = () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+    }
+  </script>
+</body>
+</html>

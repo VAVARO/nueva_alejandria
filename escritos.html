@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escritos y Reflexiones · Nueva Alejandría</title>
+  <meta name="description" content="El Cuaderno de Alejandría: ensayos y reflexiones sobre filosofía hermética, mitología y astrología biográfica.">
+  
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fcfdfa;
+      --paper-alt: #f5faf7;
+      --paper-warm: #f6f3ec;
+      --ink: #1B1851;
+      --ink-soft: #2a2569;
+      --teal: #30B1AC;
+      --teal-hover: #26928e;
+      --teal-soft: rgba(48, 177, 172, 0.12);
+      --line: rgba(27, 24, 81, 0.15);
+      --line-subtle: rgba(27, 24, 81, 0.08);
+      --text-muted: #51566c;
+      --text-light: #737890;
+      --card-bg: transparent;
+      --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", "Acumin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper-warm);
+      color: var(--ink);
+      font: 16px/1.65 var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .prototype-bar {
+      background: var(--ink);
+      color: #e4f5f4;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 9px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 40;
+    }
+    .prototype-bar .badge {
+      background: transparent;
+      color: var(--teal);
+      padding: 0;
+      border-radius: 0;
+      font-weight: 700;
+      margin-right: 10px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .18em;
+      border-bottom: 1px solid var(--teal);
+    }
+    .prototype-bar a { color: #ffffff; text-decoration: underline; text-underline-offset: 3px; transition: color 160ms var(--ease-out); }
+    @media (hover: hover) and (pointer: fine) {
+      .prototype-bar a:hover { color: var(--teal); }
+    }
+
+    header {
+      height: 105px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 243, 236, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; color: var(--ink); }
+    .brand-logo { height: 54px; width: auto; display: block; object-fit: contain; }
+    .brand-text { display: flex; flex-direction: column; justify-content: center; }
+    .brand-title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+    .brand-subtitle { font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-top: 3px; }
+
+    nav { display: flex; gap: 26px; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .04em; }
+    nav a { transition: color 160ms var(--ease-out); position: relative; }
+    nav a.active { color: var(--teal); }
+    @media (hover: hover) and (pointer: fine) {
+      nav a:hover { color: var(--teal); }
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--teal);
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 10px 20px;
+      border: 1px solid var(--ink);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .05em;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out) !important;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-cta:hover {
+      background: var(--teal) !important;
+      border-color: var(--teal) !important;
+      color: #fff !important;
+    }
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); }
+
+    /* Page Banner */
+    .page-banner {
+      background: var(--paper-warm);
+      border-bottom: 1px solid var(--line);
+      padding: 75px 5% 60px;
+    }
+    .banner-inner { max-width: 1300px; margin: auto; }
+    .banner-eyebrow {
+      font: 600 11px var(--font-sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .banner-title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5.5vw, 68px);
+      line-height: 1.1;
+      font-weight: 600;
+      color: var(--ink);
+      max-width: 860px;
+    }
+    .banner-lead {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-top: 20px;
+    }
+
+    /* Índice Literario de Ensayos */
+    .section { max-width: 1300px; margin: auto; padding: 85px 5%; }
+    .essays-index {
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+    }
+    .essay-card {
+      display: grid;
+      grid-template-columns: 20% 55% 25%;
+      gap: 30px;
+      align-items: baseline;
+      padding: 38px 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      transition: background-color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover {
+      background: rgba(27, 24, 81, 0.02);
+    }
+    }
+    .essay-col-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .essay-cat {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .essay-date {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    .essay-col-title .essay-title {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover .essay-title {
+      color: var(--teal);
+    }
+    }
+    .essay-col-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .essay-snippet {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .essay-readmore {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .essay-card:hover .essay-readmore {
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+    }
+
+    /* Modal Lector: Pliego Literario */
+    dialog {
+      padding: 0;
+      border: 1px solid var(--line);
+      width: min(840px, 94vw);
+      max-height: 90vh;
+      background: var(--paper-warm);
+      margin: auto;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    dialog::backdrop { background: rgba(27, 24, 81, 0.7); backdrop-filter: blur(5px); }
+    .modal-head {
+      background: var(--paper-warm);
+      padding: 18px 8%;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .modal-head h3 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .reading-time-indicator {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--teal);
+    }
+    .modal-close-btn { font-size: 20px; line-height: 1; color: var(--text-muted); cursor: pointer; padding: 4px 8px; }
+    .modal-content-area {
+      padding: 60px 10%;
+      overflow-y: auto;
+      max-height: calc(90vh - 75px);
+      background: var(--paper-warm);
+    }
+    .essay-reader-article {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .essay-reader-article h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 3.8vw, 42px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .essay-reader-meta {
+      font-size: 12px;
+      color: var(--teal);
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+      display: block;
+      text-align: center;
+    }
+    .essay-reader-body p {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.85;
+      color: #2b2e3e;
+      margin-bottom: 24px;
+    }
+    .essay-reader-body p:first-of-type::first-letter {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin: 6px 14px 0 0;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .essay-reader-body blockquote {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 30px 32px;
+      margin: 38px 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      text-align: center;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.6;
+    }
+    .essay-colophon {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .colophon-mark {
+      font-size: 20px;
+      color: var(--teal);
+      font-style: normal;
+    }
+    .btn-primary,
+    .btn-close-folio {
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 26px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover,
+    @media (hover: hover) and (pointer: fine) {
+      .btn-close-folio:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Footer */
+    footer { background: var(--ink); color: #bcc3d4; padding: 60px 5% 40px; font-size: 13px; }
+    .footer-inner { max-width: 1300px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 40px; margin-bottom: 30px; }
+    .footer-brand .brand-title { color: #ffffff; font-size: 24px; }
+    .footer-brand .brand-subtitle { color: var(--teal); margin-top: 4px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: #a4adc2; }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-col a:hover { color: var(--teal); }
+    }
+    .footer-bottom { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; font-size: 12px; color: #727a94; }
+
+    @media (max-width: 900px) {
+      header { height: 80px; }
+      .menu-toggle { display: flex; }
+      nav { display: none; position: absolute; top: 80px; left: 0; right: 0; background: rgba(252, 253, 250, 0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 24px 8%; gap: 18px; border-bottom: 1px solid var(--line); }
+      nav.nav-open { display: flex; }
+      .essay-card { grid-template-columns: 1fr; gap: 12px; padding: 26px 0; }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 10px; }
+      .prototype-bar { flex-direction: column; align-items: flex-start; font-size: 12px; }
+    }
+  
+    /* ===== Pulido de movimiento y accesibilidad ===== */
+    :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+    h1, h2, h3 { text-wrap: balance; }
+    p, blockquote, .essay-excerpt { text-wrap: pretty; }
+    h1, h2, h3, .brand-title { font-optical-sizing: auto; }
+
+    /* Foco de teclado visible en todas las páginas */
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    footer :focus-visible, .prototype-bar :focus-visible { outline-color: #ffffff; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 3px;
+    }
+    footer a:focus-visible, .prototype-bar a:focus-visible { outline-color: #ffffff; }
+
+    /* Respuesta al presionar */
+    .btn-primary, .nav-cta, .btn-reserve, .btn-reserve-action, .btn-book-action, .btn-book-now,
+    .btn-submit-form, .btn-close-folio, .btn-secondary, .media-btn {
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: 160ms;
+      transition-timing-function: var(--ease-out);
+    }
+    .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+    .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+    .btn-close-folio:active, .btn-secondary:active, .media-btn:active {
+      transform: scale(0.97);
+      transition-duration: 100ms;
+    }
+
+    /* Entrada y salida de modales (entra 220ms, sale 160ms) */
+    dialog {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out),
+                  overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open] {
+      opacity: 1;
+      transform: none;
+      transition-duration: 220ms;
+    }
+    @starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
+    dialog::backdrop {
+      opacity: 0;
+      transition: opacity 160ms var(--ease-out), overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open]::backdrop { opacity: 1; transition-duration: 220ms; }
+    @starting-style { dialog[open]::backdrop { opacity: 0; } }
+
+    /* Movimiento reducido: sin desplazamiento ni escala, se conservan opacidad y color */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      dialog, dialog[open] { transform: none; }
+      .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+      .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+      .btn-close-folio:active, .btn-secondary:active, .media-btn:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="prototype-bar" aria-label="Selector de versión">
+    <div>
+      <span class="badge">Prototipo B</span>
+      <span>Versión Multi-Página Tradicional · Escritos & Bitácora</span>
+    </div>
+    <div>
+      <a href="./nueva_alejandría.html#escritos">Ver en Prototipo A (One-Pager continuo) →</a>
+    </div>
+  </aside>
+
+  <header>
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="Logo de Nueva Alejandría" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Nueva Alejandría</span>
+        <span class="brand-subtitle">Escuela para lo humano</span>
+      </div>
+    </a>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav">
+      <a href="./escuela.html">La escuela</a>
+      <a href="./cursos.html">Cursos y talleres</a>
+      <a href="./consultas.html">Consultas individuales</a>
+      <a href="./escritos.html" class="active">Escritos</a>
+      <a href="./conversaciones.html">Conversaciones</a>
+      <a href="./consultas.html" class="nav-cta">Agendar hora</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="banner-inner">
+        <div class="banner-eyebrow">§ IV — Bitácora del Saber</div>
+        <h1 class="banner-title">Escritos y Reflexiones</h1>
+        <p class="banner-lead">El Cuaderno de Alejandría: ensayos pausados, notas al margen e indagaciones sobre el arte, los mitos clásicos y los ritmos de la vida interior.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="essays-index">
+        <article class="essay-card" data-essay="khunrath">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Filosofía Hermética</span>
+            <time class="essay-date">18 Mar 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">El Oratorio y el Laboratorio: La reconciliación entre la plegaria y el experimento</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">En 1609, Heinrich Khunrath publicó un grabado que resume el drama de la condición humana: a la izquierda, el rezo silencioso ante la luz divina; a la derecha, los alambiques y fuegos de la transformación material...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+
+        <article class="essay-card" data-essay="saturno">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Astrología Biográfica</span>
+            <time class="essay-date">02 Feb 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">Saturno y el Retorno de los 29 Años: El peso del tiempo como forja</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">La tradición astrológica temió a Saturno como el gran maléfico, pero la mirada humanista revela su verdadera naturaleza: es el arquitecto interior que nos arranca de las fantasías juveniles para exigirnos realidad...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+
+        <article class="essay-card" data-essay="mitos">
+          <div class="essay-col-meta">
+            <span class="essay-cat">Mitología & Alma</span>
+            <time class="essay-date">14 Ene 2026</time>
+          </div>
+          <div class="essay-col-title">
+            <h3 class="essay-title">El Laberinto de Creta: Por qué el mito de Ariadna sigue curando hoy</h3>
+          </div>
+          <div class="essay-col-desc">
+            <p class="essay-snippet">Todos entramos alguna vez al laberinto de una crisis personal. La lucidez de los antiguos griegos consistió en recordarnos que la espada de Teseo no sirve de nada sin el hilo sutil de la paciencia y el amor de Ariadna...</p>
+            <span class="essay-readmore">Leer ensayo →</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL LECTOR DE ENSAYOS: PLIEGO LITERARIO -->
+  <dialog id="modal-essay-reader">
+    <div class="modal-head">
+      <div>
+        <h3>Cuaderno de Alejandría · Ensayo</h3>
+        <span class="reading-time-indicator">Tiempo estimado de lectura: ~5 min</span>
+      </div>
+      <button class="modal-close-btn" id="close-essay-reader" aria-label="Cerrar lectura">×</button>
+    </div>
+    <div class="modal-content-area">
+      <article class="essay-reader-article">
+        <h2 id="essay-full-title">Título del ensayo</h2>
+        <span class="essay-reader-meta" id="essay-full-meta">Categoría · Por Alejandra Silva Pérez</span>
+        <div class="essay-reader-body" id="essay-full-body"></div>
+        <div class="essay-colophon">
+          <span class="colophon-mark">❦</span>
+          <p>Nueva Alejandría · Cuaderno de Ensayo y Pensamiento Humanista</p>
+          <p>Santiago de Chile · Primavera de 2026</p>
+          <button class="btn-close-folio" id="btn-close-reader-bottom">Cerrar pliego de lectura</button>
+        </div>
+      </article>
+    </div>
+  </dialog>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-title">Nueva Alejandría</div>
+        <div class="brand-subtitle">Escuela para lo humano</div>
+        <p>Un espacio dedicado al estudio del alma, los lenguajes simbólicos y la reconciliación entre el intelecto y la vida interior.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Páginas</h5>
+        <ul>
+          <li><a href="./escuela.html">La Escuela</a></li>
+          <li><a href="./cursos.html">Cursos y Talleres</a></li>
+          <li><a href="./consultas.html">Consultas Individuales</a></li>
+          <li><a href="./escritos.html">Escritos y Ensayos</a></li>
+          <li><a href="./conversaciones.html">Conversaciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Formatos</h5>
+        <ul>
+          <li><a href="./index.html">Versión Multi-Página</a></li>
+          <li><a href="./nueva_alejandría.html">Versión One-Pager</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto & Redes</h5>
+        <ul>
+          <li><a href="mailto:contacto@nuevaalejandria.cl">contacto@nuevaalejandria.cl</a></li>
+          <li><a href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">@aledealejandria (Instagram)</a></li>
+          <li><a href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">Podcast en Spotify</a></li>
+          <li><a href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">Diálogos en YouTube</a></li>
+          <li>Santiago de Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nueva Alejandría · Escuela para lo humano · Todos los derechos reservados.</span>
+      <span>Grabado: H. Khunrath (1609) · Dominio Público</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('#menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    if (menuToggle && mainNav) {
+      menuToggle.onclick = () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+    }
+
+    const essaysData = {
+      khunrath: {
+        title: "El Oratorio y el Laboratorio: La reconciliación entre la plegaria y el experimento",
+        meta: "Filosofía Hermética · Heinrich Khunrath y el Renacimiento",
+        body: `
+          <p>Cuando Heinrich Khunrath publicó en 1609 su <em>Amphitheatrum sapientiae aeternae</em>, incluyó una lámina circular que sintetiza como pocas la encrucijada del pensamiento europeo antes de la fractura cartesiana. En esa amplia sala abovedada conviven dos estancias que hoy juzgamos incompatibles: el <strong>oratorium</strong>, donde el filósofo reza arrodillado frente al tabernáculo y la luz divina, y el <strong>laboratorium</strong>, donde hierven retortas, se apilan hornos y reposan frascos de sustancias alquímicas.</p>
+          <blockquote>«Non omnibus datum est adire Corinthum: no a todos les es dado llegar a Corinto sin haber purificado antes su propia mirada interior.»</blockquote>
+          <p>Para la mentalidad renacentista, la transformación de la materia en el laboratorio era estéril sin la correspondiente transmutación del corazón en el oratorio. La ciencia sin mística conduce a la depredación técnica; la mística sin trabajo paciente degenera en delirio ilusorio. Khunrath nos recuerda que la verdadera sabiduría nace en el punto exacto donde la contemplación silenciosa fecunda el compromiso activo con el mundo.</p>
+          <p>En Nueva Alejandría hemos querido que este grabado presida nuestra casa porque encarna nuestra pedagogía: estudiar la astrología, la mitología y las humanidades no como un pasatiempo abstracto, sino como un laboratorio íntimo donde cada individuo templa su propia verdad.</p>
+        `
+      },
+      saturno: {
+        title: "Saturno y el Retorno de los 29 Años: El peso del tiempo como forja",
+        meta: "Astrología Biográfica & Psicología Arquetípica",
+        body: `
+          <p>Entre los veintiocho y los treinta años de vida, el planeta Saturno completa su primera órbita completa en torno al Sol y regresa exactamente al grado zodiacal que ocupaba en el instante de nuestro nacimiento. Para la astrología tradicional, Saturno era el <em>gran maléfico</em>: el anciano con la hoz, el invierno estéril, el verdugo de las esperanzas.</p>
+          <p>Sin embargo, vista desde la psicología profunda, la crisis del retorno saturnino no es un castigo, sino una bendición austera. Saturno llega para poner término a la adolescencia prolongada. Destruye con precisión implacable aquellas estructuras de vida que fueron edificadas sobre el mandato familiar, la complacencia ajena o las fantasías infantiles de omnipotencia.</p>
+          <blockquote>«El peso no busca hundirte; busca comprobar si los cimientos de tu casa son de piedra o de arena.»</blockquote>
+          <p>Aprender a recibir a Saturno es el inicio de la auténtica adultez. Quien atraviesa con lucidez este umbral descubre que los límites, las renuncias deliberadas y la paciencia no son cadenas que nos encarcelan, sino las murallas protectoras dentro de las cuales el alma por fin puede consolidar su obra propia.</p>
+        `
+      },
+      mitos: {
+        title: "El Laberinto de Creta: Por qué el mito de Ariadna sigue curando hoy",
+        meta: "Mitología Clásica & Arquetipos",
+        body: `
+          <p>La mitología no es un conjunto de fábulas ingenuas inventadas por pueblos primitivos; es la psicología más depurada de la civilización humana. El laberinto de Minos en Creta, con su monstruo mitad hombre y mitad toro devorando a los jóvenes atenienses, no es otra cosa que el relato arquetípico de una sociedad atrapada en su propia crueldad instintiva y su codicia.</p>
+          <p>Cuando Teseo desciende a las entrañas de la oscuridad, lleva consigo una espada afilada, el símbolo de la razón y la fuerza de voluntad. Pero la fuerza y la razón son ciegas en la tiniebla si no cuentan con una aliada fundamental: el ovillo de hilo dorado que le entrega Ariadna.</p>
+          <blockquote>«La espada puede vencer a la bestia, pero solo el hilo del amor consciente sabe cómo desandar el camino de regreso hacia la luz del día.»</blockquote>
+          <p>En nuestras consultas y talleres insistimos constantemente en este pasaje: en las crisis biográficas contemporáneas abundan las recetas enérgicas de superación, pero casi nadie enseña a tejer el hilo que nos permite mantenernos vinculados a nuestro centro vital. Recuperar a Ariadna es recuperar la ternura y la paciencia necesarias para no perdernos en la propia sombra.</p>
+        `
+      }
+    };
+
+    const modalEssay = document.querySelector('#modal-essay-reader');
+    const closeEssayBtn = document.querySelector('#close-essay-reader');
+    const btnCloseReaderBottom = document.querySelector('#btn-close-reader-bottom');
+    const essayTitle = document.querySelector('#essay-full-title');
+    const essayMeta = document.querySelector('#essay-full-meta');
+    const essayBody = document.querySelector('#essay-full-body');
+
+    document.querySelectorAll('.essay-card').forEach(card => {
+      card.onclick = () => {
+        const key = card.getAttribute('data-essay');
+        const data = essaysData[key];
+        if (data) {
+          essayTitle.textContent = data.title;
+          essayMeta.textContent = data.meta;
+          essayBody.innerHTML = data.body;
+          modalEssay.showModal();
+        }
+      };
+    });
+
+    if (closeEssayBtn) closeEssayBtn.onclick = () => modalEssay.close();
+    if (btnCloseReaderBottom) btnCloseReaderBottom.onclick = () => modalEssay.close();
+    if (modalEssay) {
+      modalEssay.addEventListener('click', (e) => { if (e.target === modalEssay) modalEssay.close(); });
+    }
+  </script>
+</body>
+</html>

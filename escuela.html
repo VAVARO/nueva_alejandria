@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Escuela · Nueva Alejandría</title>
+  <meta name="description" content="Manifiesto, misión y fundadora de Nueva Alejandría. Escuela para lo humano, dirigida por Alejandra Silva Pérez.">
+  
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fcfdfa;
+      --paper-alt: #f5faf7;
+      --paper-warm: #f6f3ec;
+      --ink: #1B1851;
+      --ink-soft: #2a2569;
+      --teal: #30B1AC;
+      --teal-hover: #26928e;
+      --teal-soft: rgba(48, 177, 172, 0.12);
+      --line: rgba(27, 24, 81, 0.15);
+      --line-subtle: rgba(27, 24, 81, 0.08);
+      --text-muted: #51566c;
+      --text-light: #737890;
+      --card-bg: transparent;
+      --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", "Acumin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper-warm);
+      color: var(--ink);
+      font: 16px/1.65 var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .prototype-bar {
+      background: var(--ink);
+      color: #e4f5f4;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 9px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 40;
+    }
+    .prototype-bar .badge {
+      background: transparent;
+      color: var(--teal);
+      padding: 0;
+      border-radius: 0;
+      font-weight: 700;
+      margin-right: 10px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .18em;
+      border-bottom: 1px solid var(--teal);
+    }
+    .prototype-bar a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .prototype-bar a:hover { color: var(--teal); }
+    }
+
+    header {
+      height: 105px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 243, 236, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; color: var(--ink); }
+    .brand-logo { height: 54px; width: auto; display: block; object-fit: contain; }
+    .brand-text { display: flex; flex-direction: column; justify-content: center; }
+    .brand-title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+    .brand-subtitle { font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-top: 3px; }
+
+    nav { display: flex; gap: 26px; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .04em; }
+    nav a { transition: color 160ms var(--ease-out); position: relative; }
+    nav a.active { color: var(--teal); }
+    @media (hover: hover) and (pointer: fine) {
+      nav a:hover { color: var(--teal); }
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--teal);
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 10px 20px;
+      border: 1px solid var(--ink);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .05em;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out) !important;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-cta:hover {
+      background: var(--teal) !important;
+      border-color: var(--teal) !important;
+      color: #fff !important;
+    }
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); }
+
+    /* Page Banner */
+    .page-banner {
+      background: var(--paper-warm);
+      border-bottom: 1px solid var(--line);
+      padding: 75px 5% 60px;
+    }
+    .banner-inner { max-width: 1300px; margin: auto; }
+    .banner-eyebrow {
+      font: 600 11px var(--font-sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .banner-title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5.5vw, 68px);
+      line-height: 1.1;
+      font-weight: 600;
+      color: var(--ink);
+      max-width: 860px;
+    }
+    .banner-lead {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-top: 20px;
+    }
+
+    /* Contenido Escuela */
+    .section { max-width: 1300px; margin: auto; padding: 85px 5%; }
+    .manifesto-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .manifesto-text p {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+    .manifesto-text p:first-of-type::first-letter {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin: 6px 14px 0 0;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .manifesto-text blockquote {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 34px 40px;
+      margin: 40px 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.6;
+      text-align: center;
+      color: var(--ink);
+    }
+
+    .pillars-box {
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .pillar-row {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .pillar-row .p-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--teal);
+      padding-top: 3px;
+      min-width: 32px;
+    }
+    .pillar-row h4 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .pillar-row p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 0 !important;
+    }
+
+    /* Columna Editorial Fundadora */
+    .founder-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 36px 30px;
+      position: sticky;
+      top: 130px;
+    }
+    .founder-figure {
+      margin: 0 0 20px 0;
+      border: 1px solid var(--line);
+      background: var(--paper-warm);
+      padding: 6px;
+    }
+    .founder-portrait-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+    }
+    .founder-caption {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 8px 4px 2px;
+    }
+    .founder-heading {
+      margin-bottom: 16px;
+    }
+    .founder-heading h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .founder-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-top: 4px;
+    }
+    .founder-bio p {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .founder-creds {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Cierre CTA */
+    .cta-banner {
+      background: var(--paper-warm);
+      border-top: 1px solid var(--line);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .cta-banner h3 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .cta-banner p {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-primary:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    }
+
+    /* Footer */
+    footer { background: var(--ink); color: #bcc3d4; padding: 60px 5% 40px; font-size: 13px; }
+    .footer-inner {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
+      margin-bottom: 30px;
+    }
+    .footer-brand .brand-title { color: #ffffff; font-size: 24px; }
+    .footer-brand .brand-subtitle { color: var(--teal); margin-top: 4px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: #a4adc2; }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-col a:hover { color: var(--teal); }
+    }
+    .footer-bottom { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; font-size: 12px; color: #727a94; }
+
+    @media (max-width: 900px) {
+      header { height: 80px; }
+      .menu-toggle { display: flex; }
+      nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(252, 253, 250, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 24px 8%;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      nav.nav-open { display: flex; }
+      .manifesto-layout { grid-template-columns: 1fr; gap: 40px; }
+      .founder-panel { position: static; }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 10px; }
+      .prototype-bar { flex-direction: column; align-items: flex-start; font-size: 12px; }
+    }
+  
+    /* ===== Pulido de movimiento y accesibilidad ===== */
+    :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+    h1, h2, h3 { text-wrap: balance; }
+    p, blockquote, .essay-excerpt { text-wrap: pretty; }
+    h1, h2, h3, .brand-title { font-optical-sizing: auto; }
+
+    /* Foco de teclado visible en todas las páginas */
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    footer :focus-visible, .prototype-bar :focus-visible { outline-color: #ffffff; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 3px;
+    }
+    footer a:focus-visible, .prototype-bar a:focus-visible { outline-color: #ffffff; }
+
+    /* Respuesta al presionar */
+    .btn-primary, .nav-cta, .btn-reserve, .btn-reserve-action, .btn-book-action, .btn-book-now,
+    .btn-submit-form, .btn-close-folio, .btn-secondary, .media-btn {
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: 160ms;
+      transition-timing-function: var(--ease-out);
+    }
+    .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+    .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+    .btn-close-folio:active, .btn-secondary:active, .media-btn:active {
+      transform: scale(0.97);
+      transition-duration: 100ms;
+    }
+
+    /* Entrada y salida de modales (entra 220ms, sale 160ms) */
+    dialog {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out),
+                  overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open] {
+      opacity: 1;
+      transform: none;
+      transition-duration: 220ms;
+    }
+    @starting-style { dialog[open] { opacity: 0; transform: scale(0.97); } }
+    dialog::backdrop {
+      opacity: 0;
+      transition: opacity 160ms var(--ease-out), overlay 160ms allow-discrete, display 160ms allow-discrete;
+    }
+    dialog[open]::backdrop { opacity: 1; transition-duration: 220ms; }
+    @starting-style { dialog[open]::backdrop { opacity: 0; } }
+
+    /* Movimiento reducido: sin desplazamiento ni escala, se conservan opacidad y color */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      dialog, dialog[open] { transform: none; }
+      .btn-primary:active, .nav-cta:active, .btn-reserve:active, .btn-reserve-action:active,
+      .btn-book-action:active, .btn-book-now:active, .btn-submit-form:active,
+      .btn-close-folio:active, .btn-secondary:active, .media-btn:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="prototype-bar" aria-label="Selector de versión">
+    <div>
+      <span class="badge">Prototipo B</span>
+      <span>Versión Multi-Página Tradicional · Página: La Escuela</span>
+    </div>
+    <div>
+      <a href="./nueva_alejandría.html#escuela">Ver en Prototipo A (One-Pager continuo) →</a>
+    </div>
+  </aside>
+
+  <header>
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="Logo de Nueva Alejandría" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Nueva Alejandría</span>
+        <span class="brand-subtitle">Escuela para lo humano</span>
+      </div>
+    </a>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav">
+      <a href="./escuela.html" class="active">La escuela</a>
+      <a href="./cursos.html">Cursos y talleres</a>
+      <a href="./consultas.html">Consultas individuales</a>
+      <a href="./escritos.html">Escritos</a>
+      <a href="./conversaciones.html">Conversaciones</a>
+      <a href="./consultas.html" class="nav-cta">Agendar hora</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="banner-inner">
+        <div class="banner-eyebrow">§ I — Manifiesto & Misión</div>
+        <h1 class="banner-title">Los saberes se encuentran.<br>La vida se transforma.</h1>
+        <p class="banner-lead">Nueva Alejandría es una escuela humanista dedicada a reconciliar el intelecto con la profundidad del alma a través de la mitología, la astrología biográfica y las tradiciones de sabiduría.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="manifesto-layout">
+        <div class="manifesto-text">
+          <p>Vivimos en una época de sobreinformación y dispersión interior. Nunca antes tuvimos tantas respuestas técnicas al alcance de la mano, y sin embargo, pocas veces nos hemos sentido tan desorientados respecto al sentido íntimo de nuestra propia biografía.</p>
+          <p>Nueva Alejandría toma su nombre de la mítica biblioteca y foco cultural de la antigüedad, donde las distintas corrientes del saber mediterráneo —la filosofía helénica, el hermetismo egipcio y el misticismo oriental— dialogaban sin exclusiones. Recuperamos ese espíritu para nuestro tiempo: tender un puente entre la sabiduría arquetípica de las grandes imágenes y las preguntas concretas del hombre y la mujer contemporáneos.</p>
+
+          <blockquote>
+            «No concebimos el conocimiento como una fría acumulación de erudición, sino como un umbral transformador de la mirada con que habitamos el propio destino.»
+          </blockquote>
+
+          <p>En nuestras clases y consultas, la carta natal no es un horóscopo predictivo, sino una partitura viva; los mitos clásicos no son fábulas infantiles, sino mapas arquetípicos de la psique; y el arte hermético del Renacimiento se convierte en una pedagogía para armonizar la contemplación con la acción en el mundo.</p>
+
+          <div class="pillars-box">
+            <div class="pillar-row">
+              <span class="p-num">I.</span>
+              <div>
+                <h4>El Símbolo como Lenguaje Primordial</h4>
+                <p>El símbolo posee la virtud de comunicar lo que el lenguaje conceptual no alcanza a nombrar. Estudiamos las imágenes arquetípicas para devolverle densidad y poesía a la experiencia cotidiana.</p>
+              </div>
+            </div>
+            <div class="pillar-row">
+              <span class="p-num">II.</span>
+              <div>
+                <h4>La Biografía como Creación Consciente</h4>
+                <p>Nuestra historia personal no es un accidente azaroso ni una condena fatal. Las crisis, pérdidas y tránsitos vitales son etapas de maduración que reclaman ser comprendidas e integradas con dignidad.</p>
+              </div>
+            </div>
+            <div class="pillar-row">
+              <span class="p-num">III.</span>
+              <div>
+                <h4>El Oratorio y el Laboratorio</h4>
+                <p>Inspirados en la célebre lámina de Heinrich Khunrath de 1609: reconciliar la quietud interior y el silencio contemplativo (el oratorio) con la indagación rigurosa, el estudio y el trabajo en el mundo (el laboratorio).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Lateral Fundadora: Retrato Editorial -->
+        <aside class="founder-panel" id="fundadora">
+          <figure class="founder-figure">
+            <img src="./assets/plate_7.jpeg" alt="Alejandra Silva Pérez" class="founder-portrait-img">
+            <figcaption class="founder-caption">Alejandra Silva Pérez · Fundadora y Directora de Nueva Alejandría</figcaption>
+          </figure>
+          <div class="founder-heading">
+            <h3>Alejandra Silva Pérez</h3>
+            <span class="founder-role">Fundadora & Directora</span>
+          </div>
+          <div class="founder-bio">
+            <p>Periodista de formación, astróloga e investigadora de tradiciones sapienciales y humanistas. Durante más de una década ha desarrollado una metodología que integra el relato biográfico, la carta natal y los arquetipos de la mitología comparada.</p>
+            <p>Su labor docente y clínica busca facilitar espacios donde las personas puedan detenerse, hacer las preguntas esenciales y reconciliarse con los ritmos profundos de su propia vida.</p>
+          </div>
+          <div class="founder-creds">
+            <div>— Periodista titulada (Universidad de Chile)</div>
+            <div>— Astróloga Humanista & Arquetípica</div>
+            <div>— Terapeuta de acompañamiento biográfico</div>
+            <div>— Docente de mitología y simbología hermética</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre -->
+    <section class="cta-banner">
+      <h3>El camino comienza con una pregunta.</h3>
+      <p>Te invitamos a descubrir nuestros programas de formación o a reservar una sesión individual con Alejandra.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a class="btn-primary" href="./cursos.html">Explorar cursos y talleres ↗</a>
+        <a class="btn-primary" href="./consultas.html">Agendar consulta individual ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-title">Nueva Alejandría</div>
+        <div class="brand-subtitle">Escuela para lo humano</div>
+        <p>Un espacio dedicado al estudio del alma, los lenguajes simbólicos y la reconciliación entre el intelecto y la vida interior.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Páginas</h5>
+        <ul>
+          <li><a href="./escuela.html">La Escuela</a></li>
+          <li><a href="./cursos.html">Cursos y Talleres</a></li>
+          <li><a href="./consultas.html">Consultas Individuales</a></li>
+          <li><a href="./escritos.html">Escritos y Ensayos</a></li>
+          <li><a href="./conversaciones.html">Conversaciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Formatos</h5>
+        <ul>
+          <li><a href="./index.html">Versión Multi-Página</a></li>
+          <li><a href="./nueva_alejandría.html">Versión One-Pager</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto & Redes</h5>
+        <ul>
+          <li><a href="mailto:contacto@nuevaalejandria.cl">contacto@nuevaalejandria.cl</a></li>
+          <li><a href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">@aledealejandria (Instagram)</a></li>
+          <li><a href="https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R" target="_blank" rel="noopener noreferrer">Podcast en Spotify</a></li>
+          <li><a href="https://www.youtube.com/watch?v=FjXZBH9Mf_I" target="_blank" rel="noopener noreferrer">Diálogos en YouTube</a></li>
+          <li>Santiago de Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nueva Alejandría · Escuela para lo humano · Todos los derechos reservados.</span>
+      <span>Grabado: H. Khunrath (1609) · Dominio Público</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('#menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    if (menuToggle && mainNav) {
+      menuToggle.onclick = () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+    }
+  </script>
+</body>
+</html>
