@@ -2251,6 +2251,13 @@
       });
 
       const updateActiveNav = () => {
+        const isBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
+        if (isBottom && sections.length > 0) {
+          const lastLink = sections[sections.length - 1].link;
+          navLinks.forEach(link => link.classList.toggle('active', link === lastLink));
+          return;
+        }
+
         const scrollPos = window.scrollY + 160;
         let current = null;
         sections.forEach(({ link, target }) => {
@@ -2437,15 +2444,22 @@
     const ytContainer = document.querySelector('#yt-player-container');
     if (ytContainer) {
       const playVideo = () => {
+        ytContainer.removeEventListener('click', playVideo);
+        ytContainer.removeEventListener('keydown', handleKey);
+        ytContainer.removeAttribute('role');
+        ytContainer.removeAttribute('tabindex');
+        ytContainer.removeAttribute('aria-label');
+        ytContainer.style.cursor = 'default';
         ytContainer.innerHTML = '<iframe src="https://www.youtube.com/embed/FjXZBH9Mf_I?autoplay=1&rel=0" title="YouTube - Vivir en la realidad" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>';
       };
-      ytContainer.addEventListener('click', playVideo);
-      ytContainer.addEventListener('keydown', (e) => {
+      const handleKey = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           playVideo();
         }
-      });
+      };
+      ytContainer.addEventListener('click', playVideo);
+      ytContainer.addEventListener('keydown', handleKey);
     }
 
     // Cerrar modales haciendo click fuera del contenido (en el backdrop)
