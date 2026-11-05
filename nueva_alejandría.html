@@ -998,7 +998,7 @@
       border: none;
     }
 
-    /* Instagram Tríptico */
+    /* Instagram Section & Modes */
     .ig-triptych-section {
       margin-top: 70px;
       padding-top: 45px;
@@ -1007,10 +1007,10 @@
     .ig-triptych-head {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-end;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 20px;
+      margin-bottom: 28px;
     }
     .ig-eyebrow {
       font-size: 12px;
@@ -1027,6 +1027,146 @@
       font-weight: 600;
       color: var(--ink);
     }
+    .ig-head-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .ig-mode-switcher {
+      display: inline-flex;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      padding: 3px;
+      gap: 3px;
+    }
+    .ig-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 160ms var(--ease-out);
+    }
+    .ig-mode-btn:hover:not(.active) {
+      color: var(--ink);
+      border-color: var(--line-subtle);
+    }
+    .ig-mode-btn.active {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .ig-mode-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    /* Vista 1: Previsualización de Publicaciones (3 posts reales) */
+    .ig-feed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ig-post-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    }
+    .ig-post-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 8px 24px rgba(27, 24, 81, 0.08);
+    }
+    .ig-post-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+    .ig-post-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .ig-post-ext {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 160ms var(--ease-out);
+    }
+    .ig-post-ext:hover {
+      color: var(--teal);
+    }
+    .ig-post-frame-wrapper {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      overflow: hidden;
+      min-height: 480px;
+      position: relative;
+    }
+    .ig-post-frame {
+      display: block;
+      width: 100%;
+      height: 480px;
+      border: none;
+      background: #ffffff;
+    }
+    .ig-post-card-body {
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .ig-post-caption {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .ig-post-card-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 9px 14px;
+      background: transparent;
+      transition: all 160ms var(--ease-out);
+      text-decoration: none;
+      margin-top: 6px;
+    }
+    .ig-post-card-cta:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #ffffff;
+    }
+
+    /* Vista 2: Tríptico de Citas */
     .ig-triptych {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1064,6 +1204,9 @@
       font-size: 13px;
       color: var(--text-light);
       font-style: italic;
+    }
+    .view-hidden {
+      display: none !important;
     }
 
     /* Sección 06: Contacto y Carta Abierta */
@@ -1483,6 +1626,7 @@
       .consultation-steps { grid-template-columns: 1fr; }
       .essay-card { grid-template-columns: 1fr; gap: 12px; padding: 26px 0; }
       .media-feature-card { grid-template-columns: 1fr; padding: 40px 0 0 0; gap: 30px; }
+      .ig-feed-grid { grid-template-columns: 1fr; }
       .ig-triptych { grid-template-columns: 1fr; }
       .ig-aphorism:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
       .footer-inner { grid-template-columns: 1fr; gap: 30px; }
@@ -1902,16 +2046,91 @@
         </article>
       </div>
 
-      <!-- Tríptico de Aforismos Instagram -->
+      <!-- Instagram: Previsualización de Publicaciones & Cuaderno -->
       <div class="ig-triptych-section">
         <div class="ig-triptych-head">
           <div>
-            <span class="ig-eyebrow">Cuaderno Abierto</span>
+            <span class="ig-eyebrow">Comunidad & Cuaderno Vivo</span>
             <h3>Alejandra en Instagram · @aledealejandria</h3>
           </div>
-          <a class="media-link" href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">Seguir a @aledealejandria →</a>
+          <div class="ig-head-actions">
+            <!-- Selector de Modos -->
+            <div class="ig-mode-switcher" role="tablist" aria-label="Modo de visualización de Instagram">
+              <button class="ig-mode-btn active" id="ig-mode-feed" role="tab" aria-selected="true" aria-controls="ig-feed-view" title="Ver previsualización de publicaciones">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Publicaciones (3)</span>
+              </button>
+              <button class="ig-mode-btn" id="ig-mode-quotes" role="tab" aria-selected="false" aria-controls="ig-quotes-view" title="Ver citas editoriales">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+                <span>Citas</span>
+              </button>
+            </div>
+            <a class="media-link" href="https://www.instagram.com/aledealejandria/" target="_blank" rel="noopener noreferrer">Seguir en Instagram →</a>
+          </div>
         </div>
-        <div class="ig-triptych">
+
+        <!-- MODO 1: Previsualización de las últimas 3 publicaciones reales -->
+        <div class="ig-feed-grid" id="ig-feed-view">
+          <!-- 01: Podcast con Caro Ulloa -->
+          <article class="ig-post-card">
+            <div class="ig-post-card-header">
+              <span class="ig-post-badge">Podcast · Diálogo</span>
+              <a class="ig-post-ext" href="https://www.instagram.com/p/DfS5W-iunPd/" target="_blank" rel="noopener noreferrer">
+                <span>@aledealejandria</span> ↗
+              </a>
+            </div>
+            <div class="ig-post-frame-wrapper">
+              <iframe class="ig-post-frame" src="https://www.instagram.com/p/DfS5W-iunPd/embed/" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" title="Instagram - @aledealejandria Podcast"></iframe>
+            </div>
+            <div class="ig-post-card-body">
+              <p class="ig-post-caption">«Escribe la palabra #podcast en los comentarios y te envío el capítulo completo 🎙️»</p>
+              <a class="ig-post-card-cta" href="https://www.instagram.com/p/DfS5W-iunPd/" target="_blank" rel="noopener noreferrer">
+                <span>Ver publicación en Instagram</span> →
+              </a>
+            </div>
+          </article>
+
+          <!-- 02: Astrología Retrospectiva 2026 -->
+          <article class="ig-post-card">
+            <div class="ig-post-card-header">
+              <span class="ig-post-badge">Astrología Viva</span>
+              <a class="ig-post-ext" href="https://www.instagram.com/p/DfPp4A7kfgn/" target="_blank" rel="noopener noreferrer">
+                <span>@aledealejandria</span> ↗
+              </a>
+            </div>
+            <div class="ig-post-frame-wrapper">
+              <iframe class="ig-post-frame" src="https://www.instagram.com/p/DfPp4A7kfgn/embed/" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" title="Instagram - @aledealejandria Astrología"></iframe>
+            </div>
+            <div class="ig-post-card-body">
+              <p class="ig-post-caption">«Una invitación a la luz de la astrología para mirar en retrospectiva este año y analizar en conjunto los movimientos necesarios...»</p>
+              <a class="ig-post-card-cta" href="https://www.instagram.com/p/DfPp4A7kfgn/" target="_blank" rel="noopener noreferrer">
+                <span>Ver publicación en Instagram</span> →
+              </a>
+            </div>
+          </article>
+
+          <!-- 03: Encuentro El Camino del Medio -->
+          <article class="ig-post-card">
+            <div class="ig-post-card-header">
+              <span class="ig-post-badge">Episodio & Encuentro</span>
+              <a class="ig-post-ext" href="https://www.instagram.com/p/DcR8p2yh6fu/" target="_blank" rel="noopener noreferrer">
+                <span>@aledealejandria</span> ↗
+              </a>
+            </div>
+            <div class="ig-post-frame-wrapper">
+              <iframe class="ig-post-frame" src="https://www.instagram.com/p/DcR8p2yh6fu/embed/" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" title="Instagram - @aledealejandria El camino del medio"></iframe>
+            </div>
+            <div class="ig-post-card-body">
+              <p class="ig-post-caption">«Nuevo capítulo del podcast ✨ El camino del medio: una experiencia terrenal, con @aledealejandria. Disponible en YouTube y Spotify»</p>
+              <a class="ig-post-card-cta" href="https://www.instagram.com/p/DcR8p2yh6fu/" target="_blank" rel="noopener noreferrer">
+                <span>Ver publicación en Instagram</span> →
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- MODO 2: Tríptico de Citas Editoriales -->
+        <div class="ig-triptych view-hidden" id="ig-quotes-view">
           <div class="ig-aphorism">
             <span class="ig-tag">Mito & Símbolo</span>
             <p class="ig-text">«No buscamos iluminarnos para escapar del barro de la vida humana, sino aprender a plantar flores en él.»</p>
@@ -2460,6 +2679,32 @@
       };
       ytContainer.addEventListener('click', playVideo);
       ytContainer.addEventListener('keydown', handleKey);
+    }
+
+    // 9. Selector de Modos Instagram (Previsualización de Publicaciones vs Cuaderno)
+    const igModeFeed = document.querySelector('#ig-mode-feed');
+    const igModeQuotes = document.querySelector('#ig-mode-quotes');
+    const igFeedView = document.querySelector('#ig-feed-view');
+    const igQuotesView = document.querySelector('#ig-quotes-view');
+
+    if (igModeFeed && igModeQuotes && igFeedView && igQuotesView) {
+      igModeFeed.addEventListener('click', () => {
+        igModeFeed.classList.add('active');
+        igModeFeed.setAttribute('aria-selected', 'true');
+        igModeQuotes.classList.remove('active');
+        igModeQuotes.setAttribute('aria-selected', 'false');
+        igFeedView.classList.remove('view-hidden');
+        igQuotesView.classList.add('view-hidden');
+      });
+
+      igModeQuotes.addEventListener('click', () => {
+        igModeQuotes.classList.add('active');
+        igModeQuotes.setAttribute('aria-selected', 'true');
+        igModeFeed.classList.remove('active');
+        igModeFeed.setAttribute('aria-selected', 'false');
+        igQuotesView.classList.remove('view-hidden');
+        igFeedView.classList.add('view-hidden');
+      });
     }
 
     // Cerrar modales haciendo click fuera del contenido (en el backdrop)

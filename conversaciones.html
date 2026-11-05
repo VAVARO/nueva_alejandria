@@ -367,7 +367,7 @@
       border: none;
     }
 
-    /* Sección de Instagram: Tríptico de Aforismos */
+    /* Sección de Instagram: Modos & Previsualización Real */
     .instagram-section {
       background: var(--paper);
       border-top: 1px solid var(--line);
@@ -375,7 +375,7 @@
     }
     .ig-header {
       max-width: 1300px;
-      margin: 0 auto 50px;
+      margin: 0 auto 36px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -399,6 +399,148 @@
       font-weight: 600;
       color: var(--ink);
     }
+    .ig-head-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .ig-mode-switcher {
+      display: inline-flex;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      padding: 3px;
+      gap: 3px;
+    }
+    .ig-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 160ms var(--ease-out);
+    }
+    .ig-mode-btn:hover:not(.active) {
+      color: var(--ink);
+      border-color: var(--line-subtle);
+    }
+    .ig-mode-btn.active {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .ig-mode-btn svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    /* Vista 1: Previsualización de Publicaciones (3 posts reales) */
+    .ig-feed-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ig-post-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    }
+    .ig-post-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 8px 24px rgba(27, 24, 81, 0.08);
+    }
+    .ig-post-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+    .ig-post-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .ig-post-ext {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 160ms var(--ease-out);
+    }
+    .ig-post-ext:hover {
+      color: var(--teal);
+    }
+    .ig-post-frame-wrapper {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      overflow: hidden;
+      min-height: 480px;
+      position: relative;
+    }
+    .ig-post-frame {
+      display: block;
+      width: 100%;
+      height: 480px;
+      border: none;
+      background: #ffffff;
+    }
+    .ig-post-card-body {
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .ig-post-caption {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .ig-post-card-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 9px 14px;
+      background: transparent;
+      transition: all 160ms var(--ease-out);
+      text-decoration: none;
+      margin-top: 6px;
+    }
+    .ig-post-card-cta:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #ffffff;
+    }
+
+    /* Vista 2: Tríptico de Citas */
     .ig-triptych {
       max-width: 1300px;
       margin: auto;
@@ -438,6 +580,9 @@
       font-size: 13px;
       color: var(--text-light);
       font-style: italic;
+    }
+    .view-hidden {
+      display: none !important;
     }
 
     /* Footer */
