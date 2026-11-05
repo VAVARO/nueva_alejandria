@@ -1,31 +1,89 @@
 # Handoff · Nueva Alejandría (Escuela para lo humano)
 
-## 1. Estado del Proyecto
-Se han implementado con éxito **los dos prototipos completos y navegables** solicitados para someter a evaluación de Alejandra Silva:
+**Repositorio GitHub:** [https://github.com/VAVARO/nueva_alejandria](https://github.com/VAVARO/nueva_alejandria)  
+**Rama activa:** `main`  
+**Último commit:** `b98a24a` — `feat(ig): agregar previsualización interactiva de últimas publicaciones de Instagram y selector de vista editorial`
 
+---
+
+## 1. Estado General del Proyecto
+
+Se completó la refactorización visual y arquitectónica integral para erradicar la estética de plantilla SaaS ("AI Slop") y transformar ambos prototipos en una **experiencia editorial y museística de alto nivel** (inspirada en *Aeon*, *Emergence Magazine* y *The Paris Review*), conservando la identidad cromática (`#1B1851`, `#30B1AC`, `#f6f3ec`, `#fcfdfa`) y la tipografía (`Cormorant Garamond` y `Plus Jakarta Sans`).
+
+### Prototipos Disponibles
 1. **Prototipo A · One-Pager Continuo:** [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html)
-   - Narrativa editorial continua, fluida y contemplativa.
-   - Cuenta con capas modales profundas para lectura inmersiva de ensayos, visualización de la lámina renacentista completa de Heinrich Khunrath (1609), y formularios interactivos de reserva en formato mockup.
+   - Narrativa fluida con scrollspy sincronizado y cabecera reactiva.
+   - Modales interactivos tipo pliego literario para ensayos, visualización en alta resolución de lámina renacentista (*Amphitheatrum Sapientiae Aeternae* de Heinrich Khunrath, 1609) y mockups de reserva/agendamiento.
 2. **Prototipo B · Multi-Página Tradicional:**
-   - [`index.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/index.html) — Portal y puerta de entrada con héroe editorial y salas temáticas.
-   - [`escuela.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escuela.html) — Manifiesto pedagógico, los tres pilares del saber y biografía completa de Alejandra Silva Pérez.
-   - [`cursos.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/cursos.html) — Catálogo de cursos y talleres con desglose curricular y modales de reserva pre-cargados.
-   - [`consultas.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/consultas.html) — Acompañamiento biográfico, carta natal y modal de agendamiento interactivo (con captura de fecha, hora y ciudad de nacimiento).
-   - [`escritos.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escritos.html) — Bitácora de ensayos humanistas con lector modal inmersivo.
-   - [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) — Medios y divulgación con los recursos reales provistos por el usuario.
+   - [`index.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/index.html) — Portal y puerta de entrada con retícula arquitectónica de 4 salas en numeración romana (`I.`, `II.`, `III.`, `IV.`).
+   - [`escuela.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escuela.html) — Manifiesto fundacional con letra capitular, los 3 pilares del saber y retrato editorial 4:5 de Alejandra Silva Pérez con pie de foto en cursiva.
+   - [`cursos.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/cursos.html) — Catálogo formativo con desglose de programas y reserva interactiva.
+   - [`consultas.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/consultas.html) — Acompañamiento biográfico y lectura de carta natal con formulario de datos natales indispensables.
+   - [`escritos.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escritos.html) — Índice literario asimétrico de 3 columnas (Fecha 20% / Título 30px 55% / Extracto y enlace 25%) y lector modal inmersivo con tiempo estimado de lectura y colofón.
+   - [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) — Sala de medios y divulgación con Spotify, YouTube e Instagram integrados.
 
 ---
 
-## 2. Recursos Reales de Medios Integrados
-- **Spotify Podcast:** Episodio invitado *«El camino del medio: una experiencia terrenal»* con Caro Ulloa Osses ([Enlace](https://open.spotify.com/episode/7EirnCvvLCarYNSZN8FS6R)).
-- **YouTube Diálogo:** Conferencia *«Vivir en la realidad: los cuentos que nos contamos y cómo salir de la ilusión para ser más conscientes»* ([Enlace](https://www.youtube.com/watch?v=FjXZBH9Mf_I)).
-- **Instagram Oficial:** Perfil `@aledealejandria` ([Enlace](https://www.instagram.com/aledealejandria/)).
+## 2. Cambios y Pulido Reciente
+
+### A. Erradicación de "AI Slop"
+- **Cero sombras SaaS:** Se eliminaron todos los `box-shadow` difuminados y elevaciones en hover (`translateY(-4px)`). Las separaciones se articulan con filetes limpios de `1px solid var(--line)` (`rgba(27, 24, 81, 0.15)`) y espacio negativo generoso.
+- **Sin píldoras de software ni emojis:** Etiquetas tipográficas planas en mayúsculas espaciadas (`letter-spacing: .18em`), sin fondos pastel ni esquinas redondeadas. Se reemplazaron checks (`✓`) y emojis (`🎧`, `▶`, `📷`, `ℹ`) por guiones editoriales (`—`) o glifos tipográficos (`❦`, `→`).
+- **Retrato y citas editoriales:** Eliminados avatares circulares de 72px; bloque de la fundadora maquetado en proporción 4:5 con tipografía de revista y citas en `<blockquote>` abierto sin barras laterales turquesas de estilo Markdown.
+
+### B. Unificación de Header y Navegación
+- Se sincronizó el header en todos los archivos: altura, alineación, título en `20px` sin quiebres de línea (`white-space: nowrap`), logo a 54px (44px en pantallas pequeñas con `flex-shrink: 0`), y botón hamburguesa con animación de 3 líneas a "X" con `z-index: 35`.
+- Se corrigió el scrollspy del Prototipo A para mantener activo el enlace final al llegar al pie de página.
+
+### C. Anonimización de Valores Monetarios
+- Todo el texto, atributos `data-price` y resúmenes de modales quedaron expresados como:
+  - Cursos / Programas: `$XX.XXX CLP / $XX.XXX USD`
+  - Consultas individuales: `$XX.XXX CLP / $XX.XXX USD`
+
+### D. Medios Interactivos y Previsualizaciones Reales
+- **Spotify:** Embed oficial y limpio del episodio en `open.spotify.com/embed/episode/7EirnCvvLCarYNSZN8FS6R`.
+- **YouTube:** Fachada interactiva de alta velocidad con thumbnail local HD (`assets/youtube_preview.jpg`, 1280×720, 16:9), botón de play editorial con accesibilidad completa (`Enter`/`Espacio`), y reemplazo dinámico por el iframe oficial al reproducir.
+- **Instagram (@aledealejandria):** Implementado un **selector de modos** en [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) y en la sección `#conversaciones` de [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html):
+  1. **Modo 1 · Publicaciones Recientes:** Cuadrícula de 3 columnas con previsualización embebida de posts reales (`/embed/`), badges temáticos, subtítulo/caption tipográfico y enlace directo a la publicación.
+  2. **Modo 2 · Cuaderno de Citas:** Tríptico editorial de aforismos en `Cormorant Garamond` cursiva separados por líneas verticales finas.
+
+### E. Micro-diseño y Accesibilidad
+- `:focus-visible` calibrado en todos los archivos con contorno en `--ink` (blanco en footer y barra superior).
+- Curva de movimiento `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` y duración sub-200ms en transiciones.
+- Todas las animaciones `:hover` protegidas bajo `@media (hover: hover) and (pointer: fine)`.
+- Soporte para `@media (prefers-reduced-motion: reduce)`.
+- Entrada de modales en `220ms` con escala sutil (`scale(0.97)` a `1`) y salida rápida en `160ms`.
+- `text-wrap: balance` en títulos y `text-wrap: pretty` en cuerpos de texto.
 
 ---
 
-## 3. Identidad Visual y Arquitectura Técnica
-- **Logo oficial:** `assets/logo.png` generado en espacio de color sRGB nativo transparente desde la data vectorial de Illustrator (`#1B1851` azul noche y `#30B1AC` calipso/teal).
-- **Grabado de Khunrath:** `assets/engraving_full.jpg` en alta resolución con contraste ajustado (`contrast(1.38)` y `brightness(0.92)`), mostrando la perspectiva completa de la sala (oratorio y laboratorio).
-- **Tipografías:** `Cormorant Garamond` (para titulares y citas editoriales) y `Plus Jakarta Sans` (para interfaz y legibilidad), cargadas de forma local vía `assets/fonts.css` con fallback a Google Fonts.
-- **Barra de Switcher:** Ambas versiones incluyen en la parte superior una barra discreta que permite al usuario alternar entre Prototipo A y Prototipo B con un solo clic.
-- **Flujos de Reserva Mockup:** Cumplen con la especificación de funcionar de manera interactiva sin backend de pagos, simulando la confirmación de la cita o cupo con folio y mensaje personalizado.
+## 3. Estructura de Archivos del Repositorio
+
+```text
+NUEVA ALEJANDRÍA/
+├── assets/
+│   ├── fonts.css               # Importación y definición tipográfica local y web
+│   ├── logo.svg / logo.png     # Isologotipo oficial sRGB
+│   ├── youtube_preview.jpg     # Miniatura HD 16:9 para fachada de YouTube
+│   ├── plate_7.jpeg            # Retrato editorial de Alejandra Silva
+│   ├── engraving_full.jpg      # Lámina completa Khunrath (1609)
+│   └── oratorio_laboratorio.jpg
+├── nueva_alejandría.html       # [Prototipo A] One-pager continuo
+├── index.html                  # [Prototipo B] Portal y salas de entrada
+├── escuela.html                # [Prototipo B] Manifiesto, pilares y fundadora
+├── cursos.html                 # [Prototipo B] Catálogo de formación y talleres
+├── consultas.html              # [Prototipo B] Carta natal y acompañamiento
+├── escritos.html               # [Prototipo B] Bitácora de ensayos y lector
+├── conversaciones.html         # [Prototipo B] Podcast, YouTube e Instagram
+├── HANDOFF.md                  # Este documento de continuidad
+├── nueva_alejandría.backup.html# Copia de respaldo previa
+└── test_svg.html               # Archivo de pruebas técnicas auxiliares
+```
+
+---
+
+## 4. Tareas o Puntos Abiertos para Retomar
+
+1. **Revisión de Embeds de Instagram en navegador:** Validar si se desea conservar las 3 publicaciones seleccionadas por defecto (`DfS5W-iunPd`, `DfPp4A7kfgn`, `DcR8p2yh6fu`) o sustituirlas por enlaces/posts específicos cuando Alejandra publique nuevos episodios.
+2. **Imágenes en producción:** Considerar generar versiones webp optimizadas si se proyecta desplegar en un hosting público permanente (como Vercel, Netlify o Cloudflare Pages).
+3. **Limpieza opcional del repo:** Si se desea, se pueden eliminar del repositorio remoto los archivos temporales `test_svg.html` y `nueva_alejandría.backup.html`.
