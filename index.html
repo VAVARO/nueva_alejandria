@@ -823,7 +823,14 @@
       <button class="modal-close-btn" id="close-art" aria-label="Cerrar modal">×</button>
     </div>
     <div style="padding: 0; background: #0c101d;">
-      <img src="./assets/Rar9441_Labor.jpg" alt="Lámina completa del Oratorio-laboratorio de Khunrath" style="width: 100%; max-height: 75vh; object-fit: contain; display: block;">
+      <img src="./assets/Rar9441_Labor.jpg" alt="Lámina completa del Oratorio-laboratorio de Khunrath" style="width: 100%; max-height: 72vh; object-fit: contain; display: block;">
+    </div>
+    <div class="modal-artwork-credits" style="padding: 16px 28px; background: var(--paper-warm); border-top: 1px solid var(--line); font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+      <div>
+        <strong style="color: var(--ink); font-family: var(--font-serif); font-size: 17px; font-weight: 600;">Amphitheatrum Sapientiae Aeternae (Hamburgo / Hanau, 1609)</strong>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Grabado al aguafuerte y buril atribuido a Paullus van der Doort · Dominio Público</div>
+      </div>
+      <button class="btn-primary" id="btn-close-art-bottom" style="padding: 9px 18px; font-size: 11px;">Cerrar lámina</button>
     </div>
   </dialog>
 
@@ -854,6 +861,10 @@
     if (modalArt) {
       if (openArtBtn) openArtBtn.onclick = () => modalArt.showModal();
       if (closeArtBtn) closeArtBtn.onclick = () => modalArt.close();
+      const btnCloseArtBottom = document.querySelector('#btn-close-art-bottom');
+      if (btnCloseArtBottom) btnCloseArtBottom.onclick = () => modalArt.close();
+    const btnCloseArtBottom = document.querySelector('#btn-close-art-bottom');
+    if (btnCloseArtBottom) btnCloseArtBottom.onclick = () => modalArt.close();
       if (footerArtLink) footerArtLink.onclick = (e) => { e.preventDefault(); modalArt.showModal(); };
       modalArt.addEventListener('click', (e) => { if (e.target === modalArt) modalArt.close(); });
     }

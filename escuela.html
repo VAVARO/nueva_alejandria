@@ -599,6 +599,14 @@
               <div>
                 <h4>El Oratorio y el Laboratorio</h4>
                 <p>Inspirados en la célebre lámina de Heinrich Khunrath de 1609: reconciliar la quietud interior y el silencio contemplativo (el oratorio) con la indagación rigurosa, el estudio y el trabajo en el mundo (el laboratorio).</p>
+                <div class="pillar-artwork-box" style="margin-top: 14px; padding: 14px 18px; border: 1px solid var(--line); background: var(--paper); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+                  <div>
+                    <span style="font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); display: block;">Lámina Histórica · 1609</span>
+                    <strong style="font-family: var(--font-serif); font-size: 16px; color: var(--ink);">Oratorio y Laboratorio de Heinrich Khunrath</strong>
+                    <div style="font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 2px;">Amphitheatrum Sapientiae Aeternae · Dominio Público</div>
+                  </div>
+                  <button class="btn-primary" id="open-art-escuela" style="padding: 8px 16px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;">Ver grabado completo ↗</button>
+                </div>
               </div>
             </div>
           </div>
@@ -638,6 +646,24 @@
       </div>
     </section>
   </main>
+
+  <!-- MODAL: Grabado Khunrath Completo -->
+  <dialog id="modal-art">
+    <div class="modal-head">
+      <h3>Heinrich Khunrath · Oratorio–Laboratorio (1609)</h3>
+      <button class="modal-close-btn" id="close-art" aria-label="Cerrar modal">×</button>
+    </div>
+    <div class="modal-content-area" style="padding: 0; background: #0c101d;">
+      <img src="./assets/Rar9441_Labor.jpg" alt="Lámina completa del Oratorio-laboratorio de Khunrath" style="width: 100%; max-height: 72vh; object-fit: contain; display: block;">
+    </div>
+    <div class="modal-artwork-credits" style="padding: 16px 28px; background: var(--paper-warm); border-top: 1px solid var(--line); font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+      <div>
+        <strong style="color: var(--ink); font-family: var(--font-serif); font-size: 17px; font-weight: 600;">Amphitheatrum Sapientiae Aeternae (Hamburgo / Hanau, 1609)</strong>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Grabado al aguafuerte y buril atribuido a Paullus van der Doort · Dominio Público</div>
+      </div>
+      <button class="btn-primary" id="btn-close-art-bottom" style="padding: 9px 18px; font-size: 11px;">Cerrar lámina</button>
+    </div>
+  </dialog>
 
   <footer>
     <div class="footer-inner">

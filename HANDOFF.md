@@ -43,9 +43,14 @@ Se completó la refactorización visual y arquitectónica integral para erradica
 ### D. Medios Interactivos y Previsualizaciones Reales
 - **Spotify:** Embed oficial y limpio del episodio en `open.spotify.com/embed/episode/7EirnCvvLCarYNSZN8FS6R`.
 - **YouTube:** Fachada interactiva de alta velocidad con thumbnail local HD (`assets/youtube_preview.jpg`, 1280×720, 16:9), botón de play editorial con accesibilidad completa (`Enter`/`Espacio`), y reemplazo dinámico por el iframe oficial al reproducir.
-- **Instagram (@aledealejandria):** Implementado un **selector de modos** en [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) y en la sección `#conversaciones` de [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html):
-  1. **Modo 1 · Publicaciones Recientes:** Cuadrícula de 3 columnas con previsualización embebida de posts reales (`/embed/`), badges temáticos, subtítulo/caption tipográfico y enlace directo a la publicación.
-  2. **Modo 2 · Cuaderno de Citas:** Tríptico editorial de aforismos en `Cormorant Garamond` cursiva separados por líneas verticales finas.
+- **Instagram (@aledealejandria):** En [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) y en [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html):
+  - Se eliminó por completo el modo "Citas" y cualquier selector o aforismo de relleno.
+  - La sección muestra directamente las **3 publicaciones reales** con imágenes fijas en alta resolución guardadas localmente (`assets/ig_post_1.jpg`, `assets/ig_post_2.jpg`, `assets/ig_post_3.jpg`), eliminando la dependencia de iframes bloqueados por Meta.
+  - Cada tarjeta incluye badge temático, miniatura con proporción 1:1, pie de foto editorial y botón directo para ver la publicación en Instagram.
+- **Grabado de Heinrich Khunrath (1609) y Créditos Completos:**
+  - Se recuperó el botón editorial "Ver grabado completo ↗" bajo la obra en [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html) y en [`index.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/index.html).
+  - Se incorporó en [`escuela.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escuela.html) bajo el Pilar III ("El Oratorio y el Laboratorio") la tarjeta de la lámina con acceso directo al modal.
+  - En el modal `<dialog id="modal-art">` se desplegaron los créditos museísticos completos: *Heinrich Khunrath · Oratorio–Laboratorio (1609)*, *Amphitheatrum Sapientiae Aeternae (Hamburgo / Hanau, 1609)*, técnica al aguafuerte y buril atribuida a Paullus van der Doort, y condición de Dominio Público con botón de cierre al pie.
 
 ### E. Micro-diseño y Accesibilidad
 - `:focus-visible` calibrado en todos los archivos con contorno en `--ink` (blanco en footer y barra superior).
