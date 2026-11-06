@@ -43,10 +43,11 @@ Se completó la refactorización visual y arquitectónica integral para erradica
 ### D. Medios Interactivos y Previsualizaciones Reales
 - **Spotify:** Embed oficial y limpio del episodio en `open.spotify.com/embed/episode/7EirnCvvLCarYNSZN8FS6R`.
 - **YouTube:** Fachada interactiva de alta velocidad con thumbnail local HD (`assets/youtube_preview.jpg`, 1280×720, 16:9), botón de play editorial con accesibilidad completa (`Enter`/`Espacio`), y reemplazo dinámico por el iframe oficial al reproducir.
-- **Instagram (@aledealejandria):** En [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) y en [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html):
+- **Instagram (@aledealejandria) con GitHub Actions Automatizado:** En [`conversaciones.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/conversaciones.html) y en [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html):
   - Se eliminó por completo el modo "Citas" y cualquier selector o aforismo de relleno.
-  - La sección muestra directamente las **3 publicaciones reales** con imágenes fijas en alta resolución guardadas localmente (`assets/ig_post_1.jpg`, `assets/ig_post_2.jpg`, `assets/ig_post_3.jpg`), eliminando la dependencia de iframes bloqueados por Meta.
-  - Cada tarjeta incluye badge temático, miniatura con proporción 1:1, pie de foto editorial y botón directo para ver la publicación en Instagram.
+  - Se implementó un flujo de **GitHub Actions** ([`.github/workflows/sync-instagram.yml`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/.github/workflows/sync-instagram.yml)) que corre cada 6 horas y por demanda manual (`workflow_dispatch`).
+  - El script [`.github/scripts/sync-instagram.js`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/.github/scripts/sync-instagram.js) gestiona la descarga de las últimas 3 publicaciones, descarga las imágenes locales a `assets/`, actualiza `assets/instagram.json` y regenera la cuadrícula de publicaciones en el HTML sin depender de iframes de Meta.
+  - Documentación completa de configuración disponible en [`docs/INSTAGRAM_SYNC.md`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/docs/INSTAGRAM_SYNC.md).
 - **Grabado de Heinrich Khunrath (1609) y Créditos Completos:**
   - Se recuperó el botón editorial "Ver grabado completo ↗" bajo la obra en [`nueva_alejandría.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/nueva_alejandr%C3%ADa.html) y en [`index.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/index.html).
   - Se incorporó en [`escuela.html`](file:///G:/Mi%20unidad/AGY/NUEVA%20ALEJANDR%C3%8DA/escuela.html) bajo el Pilar III ("El Oratorio y el Laboratorio") la tarjeta de la lámina con acceso directo al modal.

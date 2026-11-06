@@ -1,0 +1,26 @@
+[
+  {
+    "id": "DfS5W-iunPd",
+    "url": "https://www.instagram.com/p/DfS5W-iunPd/",
+    "image": "./assets/ig_post_1.jpg",
+    "badge": "Podcast · Diálogo",
+    "handle": "@aledealejandria",
+    "caption": "«Escribe la palabra #podcast en los comentarios y te envío el capítulo completo 🎙️»"
+  },
+  {
+    "id": "DfPp4A7kfgn",
+    "url": "https://www.instagram.com/p/DfPp4A7kfgn/",
+    "image": "./assets/ig_post_2.jpg",
+    "badge": "Astrología Viva",
+    "handle": "@aledealejandria",
+    "caption": "«Una invitación a la luz de la astrología para mirar en retrospectiva este año y analizar en conjunto los movimientos necesarios...»"
+  },
+  {
+    "id": "DcR8p2yh6fu",
+    "url": "https://www.instagram.com/p/DcR8p2yh6fu/",
+    "image": "./assets/ig_post_3.jpg",
+    "badge": "Episodio & Encuentro",
+    "handle": "@aledealejandria",
+    "caption": "«Nuevo capítulo del podcast ✨ El camino del medio: una experiencia terrenal, con @aledealejandria. Disponible en YouTube y Spotify»"
+  }
+]
